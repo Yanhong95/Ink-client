@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.Logo {
+    // background-color: $color-primary-darkest;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    img {
+        height: 5rem;
+    }
+}

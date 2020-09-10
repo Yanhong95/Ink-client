@@ -1,10 +1,12 @@
 .NavigationItems {
+    grid-column: row-start 3 / row-end 12;
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100%;
 }
 

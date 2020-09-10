@@ -19,14 +19,15 @@ html {
 
 body {
   font-family: $font-primary;
-  color: $color-grey-light-2;
   font-weight: 300;
   line-height: 1.6;
 }
 
-.container{
+#root{
   display: grid;
-  grid-template-rows: 8vh 1fr;
+  height: 100vh;
+  grid-template-rows:  repeat(14, [col-start] 1fr [col-end]);
+  grid-template-columns: 5vw repeat(13, [col-start] minmax(min-content, 1fr) [col-end]);
 }
 
 
