@@ -1,4 +1,5 @@
-@import './variables.scss';
+@import './shared/scss/variables.scss';
+@import './shared/scss/typography.scss';
 
 *,
 *::before,
@@ -21,13 +22,11 @@ body {
   font-family: $font-primary;
   font-weight: 300;
   line-height: 1.6;
+
 }
 
 #root{
   display: grid;
-  height: 100vh;
-  grid-template-rows:  repeat(14, [col-start] 1fr [col-end]);
-  grid-template-columns: 5vw repeat(13, [col-start] minmax(min-content, 1fr) [col-end]);
+  grid-template-columns: 5vw 1fr;
 }
-
 

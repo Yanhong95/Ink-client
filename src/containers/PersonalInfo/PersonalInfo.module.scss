@@ -1,0 +1,488 @@
+@import '../../shared/scss/variables.scss';
+@import '../../shared/scss/mixin.scss';
+@import '../../shared/scss/typography.scss';
+
+.info {
+
+  display: grid;
+  width: auto;
+  grid-template-rows: repeat(2, 30vh) repeat(2, 20vh) repeat(4, min-content);
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+  &_summary {
+    grid-column: full-start / col-end 5;
+    grid-row: 1 / 2;
+    padding: 4vmin 2vmin 2vmin 4vmin;
+    background-color: $color-grey-light-1;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 8vmin 3vmin 3vmin 3vmin;
+      position: relative;
+      display: flex;
+
+
+      &_text {
+        @include heading-5-dark;
+        padding: 0 2rem;
+        flex: 0, 50%;
+      }
+
+      &::before {
+        content: "Summary";
+        position: absolute;
+        top: -2.3rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 8vmin;
+        font-weight: 300;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+    }
+  }
+
+  &_skills {
+    grid-column: full-start / col-end 5;
+    grid-row: 2 / 3;
+    padding: 2vmin 2vmin 2vmin 4vmin;
+    background-color: $color-grey-light-1;
+    position: relative;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 7vmin 3vmin 3vmin 3vmin;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-content: flex-start;
+      @include heading-5-dark;
+
+      &_title {
+        flex: 0 30%;
+        margin-bottom: 1%;
+      }
+
+      &_content {
+        flex: 0 60%;
+        margin-bottom: 1%;
+      }
+
+      &::before {
+        content: "Skills";
+        position: absolute;
+        top: -1.7rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 8vmin;
+        font-weight: 300;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+    }
+
+  }
+
+  &_education {
+    grid-column: full-start / col-end 5;
+    grid-row: 3 / 5;
+    padding: 2vmin 2vmin 4vmin 4vmin;
+    background-color: $color-grey-light-1;
+    position: relative;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 8vmin 3vmin 3vmin 3vmin;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      ;
+      align-content: flex-start;
+      @include heading-5-dark;
+
+      &_major {
+        flex: 0 100%;
+        padding: 0 2rem;
+        margin-bottom: 0.5%;
+      }
+
+      &_school {
+        flex: 0 70%;
+        padding: 0 2rem;
+        margin-bottom: 0.5%;
+      }
+
+      &_graduateTime {
+        flex: 0 25%;
+        padding: 0 2rem;
+        margin-bottom: 0.5%;
+        text-align: end;
+      }
+
+      &_courses {
+        flex: 0 100%;
+        margin-bottom: 0.5%;
+        padding: 0 2rem;
+        @include heading-6-dark;
+      }
+
+
+      &::before {
+        content: "Education";
+        position: absolute;
+        top: -1.7rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 8vmin;
+        font-weight: 300;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+    }
+  }
+
+  &_aboutMe {
+    grid-column: col-start 6 / full-end;
+    grid-row: 1 / 4;
+    padding: 4vmin 4vmin 2vmin 2vmin;
+    background-color: $color-grey-light-1;
+    position: relative;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 10vmin 3vmin 3vmin 3vmin;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(7, 1fr);
+
+      &_image {
+        grid-row: 1 / 4;
+        grid-column: 1 / -1;
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          box-shadow: -6px -6px 3px 6px white inset;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &_info {
+        grid-row: 4 / -1;
+        grid-column: 1 / -1;
+
+        &_name {
+          @include heading-3;
+          color: $color-grey-dark-2;
+          text-align: center;
+        }
+
+        &_details {
+          @include heading-5-light;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          align-content: flex-start;
+
+          &_title {
+            flex: 0 25%;
+            margin-bottom: 1%;
+          }
+
+          &_content {
+            flex: 0 60%;
+            margin-bottom: 1%;
+
+            a {
+              text-decoration: none;
+              color: $color-blue;
+              border-radius: 20%;
+
+              &:hover {
+                color: $color-blue-dark;
+                animation: pulsate 1s infinite;
+              }
+
+              &:focus {
+                outline: none;
+                animation: pulsate 1s infinite;
+              }
+            }
+          }
+
+          &_resume {
+            flex: 0 100%;
+            margin: 7% 3% 3% 3%;
+            text-align: center;
+
+            &_bouncy {
+              animation: bouncy 4s infinite linear;
+              position: relative;
+            }
+
+            button {
+              @include btn;
+            }
+          }
+
+        }
+      }
+
+      &::before {
+        content: "About me";
+        position: absolute;
+        top: -2.3rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 10vmin;
+        font-weight: 300;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+
+    }
+
+  }
+
+  &_followMe {
+    grid-column: col-start 6 / full-end;
+    grid-row: 4 / 5;
+    padding: 2vmin 4vmin 4vmin 2vmin;
+    background-color: $color-grey-light-1;
+
+    &_figure {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      position: relative;
+      height: 100%;
+      padding: 2vmin 2vmin 2vmin 2vmin;
+
+      &_icon {
+        width: auto;
+        height: 100%;
+        transition: transform .8s;
+        display: flex;
+        align-items: center;
+
+        a {
+          display: block;
+        }
+
+        img {
+          height: 5vmin;
+          width: 5vmin;
+        }
+
+        svg {
+          height: 100%;
+          color: $color-primary-dark;
+
+          &:hover {
+            color: $color-blue;
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      &::before {
+        content: "Follow me";
+        position: absolute;
+        top: -2rem;
+        left: -0.5rem;
+        line-height: 1;
+        font-size: 5vmin;
+        font-weight: 400;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+    }
+  }
+
+  &_workExperience {
+    grid-column: 1/-1;
+    grid-row: 5 / 6;
+    padding: 2vmin 4vmin 4vmin 4vmin;
+    background-color: $color-grey-light-1;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 8vmin 6vmin 6vmin 6vmin;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60vw, 1fr));
+      column-gap: 10vmin;
+      row-gap: 4vmin;
+      @include heading-5-dark;
+      position: relative;
+
+      &_exp {
+        a {
+          text-decoration: none;
+          color: $color-grey-dark-2;
+
+          &:hover {
+            color: $color-blue;
+          }
+        }
+
+        h5 {
+          @include heading-5-dark;
+          padding-left: 3rem;
+
+          &::before {
+            content: "\00B7";
+            line-height: 0.4;
+            left: 5rem;
+            position: absolute;
+            font-size: 8vmin;
+            font-weight: 300;
+            color: $color-grey-dark-2;
+          }
+        }
+      }
+
+      hr {
+        border-top: 1px solid $color-grey-dark-1;
+      }
+
+      &::before {
+        content: "Work experience";
+        position: absolute;
+        top: -2rem;
+        left: -0.5rem;
+        line-height: 1;
+        font-size: 8vmin;
+        font-weight: 300;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+    }
+  }
+
+  &_ProjectExperience {
+    grid-column: 1/-1;
+    grid-row: 6 / -1;
+    padding: 2vmin 4vmin 4vmin 4vmin;
+    background-color: $color-grey-light-1;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 8vmin 6vmin 6vmin 6vmin;
+      position: relative;
+
+      &::before {
+        content: "Project experience";
+        position: absolute;
+        top: -2rem;
+        left: -0.5rem;
+        line-height: 1;
+        font-size: 8vmin;
+        font-weight: 300;
+        color: $color-grey-dark-2;
+        font-family: sans-serif;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+
+
+@mixin beforeLinke($content) {
+  content: $content;
+  position: absolute;
+  top: -2.5rem;
+  left: -0.5rem;
+  line-height: 1;
+  font-size: 5vmin;
+  font-weight: 400;
+  color: $color-grey-dark-2;
+  font-family: sans-serif;
+  z-index: 1;
+}
+
+
+@keyframes pulsate {
+  0% {
+    /*开始scale是一样的*/
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+  50% {
+    /*中间scale1.05倍*/
+    /*然后有一点阴影*/
+    transform: scale(1.05);
+    box-shadow: 3rem 3rem 10rem rgba(0, 0, 0, .25);
+  }
+
+  100% {
+    /*然后回到原样*/
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+@keyframes bouncy {
+  0% {
+    top: 0em
+  }
+
+  40% {
+    top: 0em
+  }
+
+  43% {
+    top: -0.5em
+  }
+
+  46% {
+    top: 0em
+  }
+
+  48% {
+    top: -0.2em
+  }
+
+  50% {
+    top: 0em
+  }
+
+  100% {
+    top: 0em;
+  }
+}

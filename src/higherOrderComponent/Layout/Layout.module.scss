@@ -1,14 +1,19 @@
-@import '../../variables.scss';
-@import '../../mixin.scss';
+@import '../../shared/scss/variables.scss';
+@import '../../shared/scss/mixin.scss';
 
 header {
   grid-column: 1 / 2;
-  grid-row: 1 / -1;
+  position: fixed;
+  width: 5vw;
+  height: 100vh;
   display: grid;
   grid-template-rows: repeat(14, [row-start] minmax(min-content, 1fr) [row-end]);
   background-color:$color-primary-darkest;
   align-items: center;
-  @include lineShadow(right, $color-grey-light-2);
+}
+
+main{
+  grid-column: 2 / -1;
 }
 
 ion-icon {

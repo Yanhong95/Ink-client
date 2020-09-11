@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './UserAuth.module.scss';
 import Aux from '../../higherOrderComponent/Aux/Aux'
-import image from '../../asset/assets/images/ME.jpg'
+import image from '../../assets/images/ME.jpg'
 import Icon from '../../shared/Icon/Icon'
 import NavigationItem from '../../components/Navigation/NavigationItems/NavigationItem/NavigationItem'
 
