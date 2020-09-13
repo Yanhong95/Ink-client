@@ -19,20 +19,25 @@ const Layout = props => {
     }
 
     return (
-        <Aux>
-            <header>
+        <div className={classes.body}>
+            <div className={classes.headerWrapper}>
+            <div className={classes.header}>
                 <Toolbar
                     // isAuth={props.isAuthenticated}
                     drawerToggleClicked={sideDrawerToggleHandler} />
                 {/* <SideDrawer
-                isAuth={props.isAuthenticated}
-                open={sideDrawerIsVisible}
-                closed={sideDrawerClosedHandler} /> */}
-            </header>
-            <main className={classes.Content}>
+                    isAuth={props.isAuthenticated}
+                    open={sideDrawerIsVisible}
+                    closed={sideDrawerClosedHandler} /> */}
+            </div>
+            </div>
+
+
+            <div className={classes.main}>
                 {props.children}
-            </main>
-        </Aux>
+            </div>
+
+        </div>
     )
 }
 

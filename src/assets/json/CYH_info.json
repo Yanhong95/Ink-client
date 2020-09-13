@@ -1,0 +1,108 @@
+{
+  "aboutMe": {
+    "name": "Yanhong Chen",
+    "photoUrl": "",
+    "address": "71 Sylvester Ave, Winchester, MA",
+    "zipCode": "01890",
+    "email": "Yanhongmain@gmail.com",
+    "phone": "857-869-6243",
+    "interests": "Photograph, Cooking, Music",
+    "resumeAdrress": "",
+    "LinkedInURL":"https://www.linkedin.com/in/yanhong-chen/",
+    "GithubURL":"https://github.com/Yanhong95",
+    "InstagramURL":"https://www.instagram.com/chuckle___/",
+    "FacebookURL":"https://www.facebook.com/yanhongchen95",
+    "LeetcodeURL":"https://leetcode.com/yanhongchen/"
+  },
+  "summary": "Graduate student majoring in information systems at Northeastern University with 2 years ofexperience using React and NodeJS to reach project goals and ship high quality software. I’m highly driven and have strong experience creating scalable, high-quality web applications, also have strong algorithm and problem-solving skills.",
+  "skills": {
+    "ProgrammingLanguages": "JavaScript, Java, HTML, CSS, Sass, Python, GraphQL, SQL",
+    "frameworks" : "React, Express, Spring, Bootstrap",
+    "database" : "MongoDB, MySQL, SQL Server, Redis, Elasticsearch",
+    "ORM" : "Mongoose, Sequelize, Hibernate"
+  },
+  "education": [
+    {
+      "schoolAndLocation" : "Northeastern University, Boston, MA",
+      "degree" : "Master of Science in Information Systems",
+      "period" : "Dec. 2020",
+      "courses": "Courses: Program Structure and Algorithms, Web Design and User Experience Engineering, Web Development Tools and Methods, Data Management and Database Design, etc."
+    },
+    {
+      "schoolAndLocation" : "Wuhan Technology and Business University, Wuhan, China",
+      "degree" : "Bachelor of Engineering in Computer Science",
+      "period" : "Jun. 2016",
+      "courses": "Courses: Programming in C, Java Web Application Development, Operation System, etc."
+    }
+  ],
+  "workExperience":[
+    {
+      "companyName":"Knovva Academy",
+      "companyURL":"https://www.knovva.com/",
+      "position":"Full Stack Developer (Intern)",
+      "period":"June 2019 – Dec 2019",
+      "location":"Boston, MA",
+      "duty":"As a pioneering academic institution designed to cultivate youth leaders. Knovva Academy organizes Model G20 Youth Leadership Summit worldwide to improve leadership and international vision of young students. I was responsible for adding exciting new features to summit application platform using React and Redux. Also, developed API by Node/Express and GraphQL layer in between.",
+      "hightLight":[
+        "Developed WeChat login feature for user platform independently, including setting up development and test environments, designing and implementing user login logic.",
+        "Achieved 1.9x performance boost for application overview component by optimizing Mongoose model structure. Fetched thousands of application information across 7 collections on MongoDB.",
+        "Rebuilt interview evaluation page, leveraged React Google Charts API to create user distribution chart, countdown page for student interview deadline, used TestCafe to write automatic tests, worked on website guided tours to improve user experience, created Easter eggs for birthday users, etc.",
+        "Cooperated with UI/UX designer to iterate new version of web interface with flat design."
+      ]
+    },
+    {
+      "companyName":"Hikvision Digital Technology Co.",
+      "companyURL": "https://us.hikvision.com/en",
+      "position":"Technical Support Engineering (Intern)",
+      "period":"May. 2018 - Aug. 2018 ",
+      "location":"Guangzhou, China",
+      "duty":null,
+      "hightLight":[
+        "Conducted installation and customer training of the IVMS-8700 Integrated Security Management Platform.",
+        "Hard disk matrix troubleshooting and maintenance for Ping An Bank Guangzhou Branch.",
+        "Debugged and tested monitoring products for the bidding of monitoring equipment of China Agricultural Bank Guangzhou Branch.",
+        "Assisted the assembly and commissioning of intelligent IoT community China Construction Bank Guangzhou Branch."
+      ]
+    }
+  ],
+  "projectExperience": [
+    {
+      "name":"Social Forum Full Stack Project",
+      "period":"June 2020 - Present",
+      "content":[
+        "Built responsive React front end and Express REST API from scratch, Integrated GraphQL for exchanging data with higher query flexibility. Used Mongoose and Sequelize respectively to achieve data persistence and transmission, used Amazon S3 to store files uploaded by users.",
+        "Implemented secure Token to ensure user authentication and authorization. Created middleware using bcrypt to protect routes and prevent CSRF.",
+        "Accessing different APIs to accomplish specific functions: Sendgrid for mailing; WebSockets for two-way interactive communication; Express-validator for server-side validation."
+      ]
+    },{
+      "name":"RESTful API for Health Insurance System",
+      "period":"June 2020 - Sept. 2020",
+      "content":[
+        "Developed RESTful API for indexing and searching huge amounts of insurance data by using Express.js.",
+        "Leveraged Redis to store data key-value pairs obtained from decomposing JSON objects and Elasticsearch as the query engine to provide dynamic searching.",
+        "Redis Simple Message Queue is used to solve the problem of blocking caused by the slow storage process of Elasticsearch.",
+        "Used Google API Client Libraries to implement OAuth 2.0 authorization to ensure API security."
+      ]
+    },{
+      "name":"Food Ordering Full Stack Project",
+      "period":"May 2020 - June 2020",
+      "content":[
+        "Developed entire project including React application and REST API. Designed and implemented core functions such as user registration, login, food selection and ordering, order history review, etc.",
+        "Converted React class components to functional components with React Hooks.",
+        "Centralizing and updating state via Redux, leveraged redux-thunk middleware to update database inside redux action creator, then dispatched new data to reducer to synchronize global state.",
+        "Interacting with Stripe API for payment processing and listed daily income for store administrator."
+      ]
+    },{
+      "name":"Recruitment Website",
+      "period":"Feb. 2019 – Apr. 2019",
+      "content":[
+        "Designed a website for applicants to browse, search and apply work, for recruiters to post jobs, browse resumes, respond to applications, for administrator to manage website data.",
+        "Used Spring MVC Framework, configure the dependency injection using annotations.",
+        "Implemented Pagination Queries, fuzzy search through Hibernate Query and Criteria API.",
+        "Built a dynamic web page using AJAX to implement request verification and information return."
+      ]
+    }
+  ]
+  
+
+}
