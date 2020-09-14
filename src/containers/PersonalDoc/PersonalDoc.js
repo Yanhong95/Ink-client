@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import DocTest from './DocTest';
+import Spinner from '../../components/UI/Spinner/Spinner'
 import classes from './test.module.scss';
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,9 +10,10 @@ const PersonalDoc = props => {
 
   return (
     <Aux>
-      {/* <p> main doc </p> */}
+      <p> main doc </p>
       <div className={classes.test}>
-        <DocTest/>
+        {/* <DocTest/> */}
+        <Spinner/>
       </div>
     </Aux>
   )

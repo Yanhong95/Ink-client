@@ -15,17 +15,17 @@
 @mixin heading-2-light  {
   @extend %heading;
   font-size: 6vmin;
-  font-style: italic;
   line-height: 1;
   color: $color-grey-dark-1; 
 }
 
 @mixin heading-2-dark  {
+  font-family: "Roboto";
   @extend %heading;
   font-size: 5vmin;
-  font-style: italic;
+  font-weight: 500;
   line-height: 1;
-  color: $color-primary-dark;
+  color: $color-primary;
 }
 
 @mixin heading-3 {
@@ -65,42 +65,6 @@
   font-size: 1.5vmin;
   color: $color-primary-dark;
 }
-
-@mixin btn {
-  display: inline-block;
-  padding: 0.4em 2em;
-  background-color: #fff;
-  border: 0.16em solid $color-blue;
-  border-radius: 5px;
-  margin: 0 0.3em 0.3em 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: $color-blue;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-
-
-  &:focus{
-    outline: none;
-  }
-  
-  &:hover {
-    border: 0.16em solid $color-blue-light;
-    background-color: $color-blue-light;
-    color: #fff;
-  }
-
-  &:active {
-    transform: translateY(2px);
-}
-}
-
-
-
 
 @mixin mb-sm { margin-bottom: 2rem; }
 @mixin mb-md { margin-bottom: 3rem; }

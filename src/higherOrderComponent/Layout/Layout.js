@@ -23,7 +23,7 @@ const Layout = props => {
             <div className={classes.headerWrapper}>
             <div className={classes.header}>
                 <Toolbar
-                    // isAuth={props.isAuthenticated}
+                    isAdmin={props.isAdmin}
                     drawerToggleClicked={sideDrawerToggleHandler} />
                 {/* <SideDrawer
                     isAuth={props.isAuthenticated}
@@ -43,7 +43,7 @@ const Layout = props => {
 
 const mapStateToProps = state => {
     return {
-        // isAuthenticated: state.auth.token !== null
+        isAdmin: state.auth.isAdmin
     };
 };
 

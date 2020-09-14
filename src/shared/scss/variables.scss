@@ -1,21 +1,14 @@
 // COLOR VARIABLES
-$color-primary: #555574;
-$color-primary-dark: #3a3a59;
-$color-primary-darkest: #323232;
+$color-primary-light: #B7B7B7; // content text
+$color-primary: #363B40;  // content background
+$color-primary-dark:  #2E3033; // secondary menu
+$color-primary-darkest: #323232; // primary menu
 
-$color-secondary: #ef3f61;
-$color-secondary-dark: #ff0b55;
-$color-secondary-darkest:#d61d4e;
 
-$color-third-1:#f8b195;
-$color-third-1:#f67280;
-$color-third-1:#c06c84;
-$color-third-1:#6c567b;
-
-$color-grey-light-1: #f9f7f6;
+$color-grey-light-1: #F1EFEE;
 $color-grey-light-2: #d6e0f0;
 
-$color-grey-dark-1: #8d93ab;
+$color-grey-dark-1: #363B40;
 $color-grey-dark-2: #393b44;
 
 $color-blue-lightest:#E0EEFF;
@@ -23,6 +16,14 @@ $color-blue-light:#6bc1e0;
 $color-blue: #40A4C8;
 $color-blue-dark:  #2a7c99;
 
+$color-secondary: #ef3f61;
+$color-secondary-dark: #ff0b55;
+$color-secondary-darkest:#d61d4e;
+
+$color-third-1:#f8b195;
+$color-third-2:#f67280;
+$color-third-3:#c06c84;
+$color-third-4:#6c567b;
 
 // FONT VARIABLES
 $font-primary: 'Roboto', 'Nunito', sans-serif, 'Segoe UI', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans';

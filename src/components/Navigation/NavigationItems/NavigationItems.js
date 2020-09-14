@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavigationItem from './NavigationItem/NavigationItem';
+import NavigationItem from './NavigationItem';
 import Aux from '../../../higherOrderComponent/Aux/Aux'
 import Icon from '../../../shared/Icon/Icon';
 const navigationItems = (props) => {
@@ -14,10 +14,9 @@ const navigationItems = (props) => {
             <NavigationItem link="/javascript">
                 <Icon name="layers-outline"></Icon>
             </NavigationItem>
-            {/* {props.isAuthenticated ? <NavigationItem link="/orders">Orders</NavigationItem> : null}
-        {!props.isAuthenticated
-            ? <NavigationItem link="/auth">Authenticate</NavigationItem>
-            : <NavigationItem link="/logout">Logout</NavigationItem>} */}
+            {props.isAdmin ? <NavigationItem link="/upload">
+                <Icon name="cloud-upload-outline"></Icon>
+            </NavigationItem> : null}
         </Aux>
     )
 

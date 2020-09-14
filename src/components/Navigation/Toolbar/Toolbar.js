@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 import classes from './Toolbar.module.scss';
 import Aux from '../../../higherOrderComponent/Aux/Aux';
 import Logo from '../../Logo/Logo';
-import UserAuth from '../../../containers/UserAuth/UserAuth';
+import AuthNav from '../../../containers/Auth/AuthNav';
 import NavigationItems from '../NavigationItems/NavigationItems';
 // import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 
@@ -23,10 +22,10 @@ const Toolbar = props => {
                 <Logo />
             </div>
             <nav className={classes.DesktopOnly}>
-                <NavigationItems isAuthenticated={props.isAuth} />
+                <NavigationItems isAdmin={props.isAdmin} />
             </nav>
             <div className={classes.Login}>
-                <UserAuth/>
+                <AuthNav/>
             </div>
         </Aux>
     );

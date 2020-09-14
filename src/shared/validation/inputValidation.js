@@ -1,31 +1,52 @@
 
-export const checkValidity = ( value, rules ) => {
-  let isValid = true;
-  if ( !rules ) {
-      return true;
-  }
+export const checkValidity = (value, rules) => {
+    let isValid = true;
+    if (!rules) {
+        return true;
+    }
 
-  if ( rules.required ) {
-      isValid = value.trim() !== '' && isValid;
-  }
+    if (rules.required) {
+        isValid = value.trim() !== '' && isValid;
+        if (!isValid) {
+            return {
+                isValid: false,
+                errorMessage: 'Empty Content.'
+            }
+        }
+    }
 
-  if ( rules.minLength ) {
-      isValid = value.length >= rules.minLength && isValid
-  }
+    if (rules.password) {
+        const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        isValid = regex.test(value) && isValid;
+        if (!isValid) {
+            return {
+                isValid: false,
+                errorMessage: 'Password require at least eight characters, at least one letter, one number and one special character.'
+            }
+        }
+    }
 
-  if ( rules.maxLength ) {
-      isValid = value.length <= rules.maxLength && isValid
-  }
+    if (rules.isEmail) {
+        const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+        isValid = pattern.test(value) && isValid
+        if (!isValid) {
+            return {
+                isValid: false,
+                errorMessage: 'Invalid Email'
+            }
+        }
+    }
 
-  if ( rules.isEmail ) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test( value ) && isValid
-  }
+    if (rules.isNumeric) {
+        const pattern = /^\d+$/;
+        isValid = pattern.test(value) && isValid
+        if (!isValid) {
+            return {
+                isValid: false,
+                errorMessage: 'Not numeric'
+            }
+        }
+    }
 
-  if ( rules.isNumeric ) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test( value ) && isValid
-  }
-
-  return isValid;
+    return { isValid: true, errorMessage: null };
 }

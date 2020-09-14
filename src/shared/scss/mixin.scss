@@ -1,3 +1,5 @@
+@import '../scss/variables.scss';
+
 @mixin lineShadow($direction, $color) {
   @if $direction==up {
     border-top: 0.5px solid $color;
@@ -28,3 +30,34 @@
   }
 }
 
+@mixin btn {
+  display: inline-block;
+  padding: 0.4em 2em;
+  background-color: #fff;
+  border: 0.16em solid $color-blue;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: $color-blue;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+
+  &:focus{
+    outline: none;
+  }
+  
+  &:hover {
+    border: 0.16em solid $color-blue-light;
+    background-color: $color-blue-light;
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(2px);
+}
+}
