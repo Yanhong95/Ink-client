@@ -10,7 +10,7 @@ import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import signUpImage from '../../assets/images/programming1.png'
-// import Aux from '../../higherOrderComponent/Aux/Aux';
+import Aux from '../../higherOrderComponent/Aux/Aux';
 
 const AuthSignUp = props => {
 
@@ -69,22 +69,20 @@ const AuthSignUp = props => {
 
   // use Array.prototype.some to test if there exists at least one element that have errorMessage. 
   // It will stop looping when some element that matches your function is found:
-  Object.values(signUpForm).some(input => { 
+  Object.values(signUpForm).some(input => {
     errorMessages = input.errorMessage ? <h6>{input.errorMessage}</h6> : null;
     disabled = input.valid && disabled;
     return input.errorMessage;
   });
-  
-  if (props.error) {
-    setMessage(props.error.message.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase()));
-    errorMessages = <h6>{message}</h6>;
-  }
 
   if (message) {
     errorMessages = <h6>{message}</h6>;
   }
 
-  console.log(message);
+  if (props.error) {
+    const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+    errorMessages = <h6>{backEndError}</h6>;
+  }
 
   let redirect = null;
   if (switchToLogin) {
@@ -95,21 +93,40 @@ const AuthSignUp = props => {
     redirect = <Redirect to={props.authRedirectPath} />
   }
 
+  // remove,  for test only.
+  disabled = true;
 
+
+  let mainContent = (
+    <Aux>
+      {form}
+      <Button btnType="Success" disabled={!disabled}> SUBMIT</ Button>
+    </Aux>
+  )
   if (props.loading) {
-    form = <Spinner />
+    mainContent = <Spinner />
+  }
+
+  if (props.activateEmail) {
+    mainContent = (
+      <Aux>
+        <span>We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link.
+        If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.
+        If you need assistance, please contact me at <a href={`mailto: Yanhongmain@gmail.com`} >Yanhongmain@gmail.com</a>.</span>
+        <h4 onClick={props.backToSignUp}>Return to sign-up</h4>
+      </Aux>
+    )
   }
 
 
   return (
     <div className={classes.signUp}>
       <div className={classes.signUp_content}>
-        <h2>Create account</h2>
+        { props.activateEmail ? <h2>Activate your email</h2> : <h2>Create account</h2>}
         {redirect}
         {errorMessages}
         <form onSubmit={submitHandler}>
-          {form}
-          <Button btnType="Success" disabled={!disabled}>SUBMIT</Button>
+          {mainContent}
         </form>
         <span>Already have account ? <p onClick={SwitchAuthModeHandler}>Switch to login.</p></span>
       </div>
@@ -125,13 +142,15 @@ const mapStateToProps = state => {
     loading: state.auth.loading,
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null,
-    authRedirectPath: state.auth.authRedirectPath
+    authRedirectPath: state.auth.authRedirectPath,
+    activateEmail: state.auth.activateEmail
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     authSignUp: (email, password, firstName, lastName) => dispatch(actions.authSignUp(email, password, firstName, lastName)),
+    backToSignUp : () => dispatch(actions.returnSignup()),
     onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   };
 };

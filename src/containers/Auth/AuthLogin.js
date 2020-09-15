@@ -74,16 +74,15 @@ const AuthLogin = props => {
     disabled = input.valid && disabled;
     return input.errorMessage;
   });
-  
-  if (props.error) {
-    setMessage(props.error.message.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase()));
-    errorMessages = <h6>{message}</h6>;
-  }
 
   if (message) {
     errorMessages = <h6>{message}</h6>;
   }
-
+  
+  if (props.error) {
+    const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+    errorMessages = <h6>{backEndError}</h6>;
+  }
 
   let redirect = null;
   if (switchToSignup) {

@@ -6,15 +6,15 @@
 
   display: grid;
   width: auto;
-  grid-template-rows: repeat(2, 30vh) repeat(2, 20vh) repeat(4, min-content);
+  grid-template-rows: repeat(2, 30vh) repeat(2, 20vh) repeat(4, min-content) 5vh;
   grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
 
   @media only screen and (max-width: $bp-large) {
-    grid-template-rows: 60vh repeat(3, min-content) repeat(2, min-content) 20vh;
+    grid-template-rows: 60vh repeat(3, min-content) repeat(2, min-content) 20vh 5vh;
     grid-template-columns: 1rf;
   }
   @media only screen and (max-width: $bp-small) {
-    grid-template-rows: minmax(min-content, 40vh) repeat(3, min-content) repeat(2, min-content) 20vh;
+    grid-template-rows: minmax(min-content, 40vh) repeat(3, min-content) repeat(2, min-content) 20vh 5vh;
     grid-template-columns: 1rf;
   }
 
@@ -322,13 +322,6 @@
     background-color: $color-grey-light-1;
     position: relative;
 
-
-    @media only screen and (max-width: $bp-large) {
-      grid-column: 1/-1;
-      grid-row: 7/-1;  
-      padding: 2vmin 4vmin 2vmin 4vmin;
-    }
-
     &_figure {
       display: flex;
       flex-direction: row;
@@ -377,6 +370,16 @@
         color: $color-grey-dark-2;
         font-family: sans-serif;
         z-index: 1;
+      }
+    }
+
+    @media only screen and (max-width: $bp-large) {
+      grid-column: 1/-1;
+      grid-row: 7/9;  
+      padding: 2vmin 4vmin 0vmin 4vmin;
+      &_figure {
+        box-shadow: 9px -4px 1rem rgba(0, 0, 0, 0.06);
+        padding: 2vmin 2vmin 0vmin 2vmin;
       }
     }
   }
@@ -455,8 +458,8 @@
 
   &_ProjectExperience {
     grid-column: 1/-1;
-    grid-row: 6 / -1;
-    padding: 2vmin 4vmin 4vmin 4vmin;
+    grid-row: 6 / 10;
+    padding: 2vmin 4vmin 2vmin 4vmin;
     background-color: $color-grey-light-1;
     position: relative;
 
@@ -515,6 +518,36 @@
         color: $color-grey-dark-2;
         font-family: sans-serif;
         z-index: 1;
+      }
+    }
+  }
+
+  &_copyright{
+    grid-column: 1/-1;
+    grid-row: 10/-1;
+    padding: 2vmin 4vmin 4vmin 4vmin;
+    background-color: $color-grey-light-1;
+
+    &_figure {
+      background-color: #fff;
+      @include lineShadow('else', $color-grey-light-2);
+      height: 100%;
+      padding: 2vmin 6vmin 2vmin 6vmin;
+      display: flex;
+      justify-content: center;
+      
+      h5{
+        @include heading-5-light;
+      }
+    }
+
+    @media only screen and (max-width: $bp-large) {
+      grid-column: 1/-1;
+      grid-row: 9/-1;  
+      padding: 0vmin 4vmin 4vmin 4vmin;
+
+      &_figure{
+        padding: 0vmin 6vmin 2vmin 6vmin;
       }
     }
   }

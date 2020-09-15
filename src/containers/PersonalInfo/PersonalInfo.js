@@ -30,12 +30,12 @@ const PersonalInfo = props => {
         <section className={classes.info_education}>
           <figure className={classes.info_education_figure}>
             {education.map(theEducation => {
-                return (<Aux key={theEducation.schoolAndLocation}>
-                  <div className={classes.info_education_figure_major}><b>{theEducation.degree}</b></div>
-                  <div className={classes.info_education_figure_school}><b>{theEducation.schoolAndLocation}</b></div>
-                  <div className={classes.info_education_figure_graduateTime}>{theEducation.period}</div>
-                  <div className={classes.info_education_figure_courses}>{theEducation.courses}</div></Aux>)
-              })}
+              return (<Aux key={theEducation.schoolAndLocation}>
+                <div className={classes.info_education_figure_major}><b>{theEducation.degree}</b></div>
+                <div className={classes.info_education_figure_school}><b>{theEducation.schoolAndLocation}</b></div>
+                <div className={classes.info_education_figure_graduateTime}>{theEducation.period}</div>
+                <div className={classes.info_education_figure_courses}>{theEducation.courses}</div></Aux>)
+            })}
           </figure>
         </section>
         <section className={classes.info_workExperience}>
@@ -81,7 +81,7 @@ const PersonalInfo = props => {
                 <div className={classes.info_aboutMe_figure_info_details_content}><a href={`mailto: ${aboutMe.email}`} >{aboutMe.email}</a></div>
                 <div className={classes.info_aboutMe_figure_info_details_title}>Phone:</div>
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.phone}</div>
-                <div className={classes.info_aboutMe_figure_info_details_title}>Interests</div>
+                <div className={classes.info_aboutMe_figure_info_details_title}>Interests:</div>
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.interests}</div>
                 <div className={classes.info_aboutMe_figure_info_details_resume}>
                   <button className={classes.info_aboutMe_figure_info_details_resume_bouncy} href="desumeDownload">Resume Download</button>
@@ -97,6 +97,11 @@ const PersonalInfo = props => {
             <div className={classes.info_followMe_figure_icon} alt="Instagram"><a href={aboutMe.InstagramURL}><FontAwesomeIcon icon={faInstagram} size="4x" /></a></div>
             <div className={classes.info_followMe_figure_icon} alt="Facebook"><a href={aboutMe.FacebookURL}><FontAwesomeIcon icon={faFacebookSquare} size="4x" /></a></div>
             {/* <div className={classes.info_followMe_figure_icon} alt="Leetcode"><a href={}><img src={aboutMe.LeetcodeURL} alt="leetcode"></img></a></div> */}
+          </figure>
+        </section>
+        <section className={classes.info_copyright}>
+          <figure className={classes.info_copyright_figure}>
+              <h5>© 2020 by Yanhong Chen. All rights reserved.</h5>
           </figure>
         </section>
       </div>

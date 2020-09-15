@@ -16,6 +16,13 @@ export const authSuccess = (token, userId) => {
   };
 };
 
+export const signUpSuccess = (userId) => {
+  return {
+    type: actionTypes.SIGNUP_SUCCESS,
+    userId: userId
+  }
+}
+
 export const authFail = (error) => {
   return {
     type: actionTypes.AUTH_FAIL,
@@ -53,12 +60,17 @@ export const authSignUp = (email, password, firstName, lastName) => {
     const url = '/auth/signup';
     axiosInstance.post(url, authData)
       .then(response => {
-        dispatch(authSuccess(response.data.idToken, response.data.userId));
+        dispatch(signUpSuccess(response.data.userId));
       })
       .catch(err => {
-        console.log(err);
-        dispatch(authFail(err.response.data));
+        dispatch(authFail(err.response.data.message));
       });
+  };
+};
+
+export const returnSignup = () => {
+  return {
+    type: actionTypes.RETURN_SIGNUP
   };
 };
 
