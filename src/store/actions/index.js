@@ -4,5 +4,7 @@ export {
   logout,
   setAuthRedirectPath,
   authCheckState,
-  returnSignup
+  returnSignup,
+  returnLogin,
+  verifyVerificationCode
 } from './auth';

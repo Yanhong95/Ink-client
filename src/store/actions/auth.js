@@ -74,6 +74,12 @@ export const returnSignup = () => {
   };
 };
 
+export const returnLogin = () => {
+  return {
+    type: actionTypes.RETURN_LOGIN
+  }
+}
+
 
 export const authLogin = (email, password) => {
   return dispatch => {
@@ -123,3 +129,31 @@ export const authCheckState = () => {
     }
   };
 };
+
+export const verifyVerificationCode = (emailVerificationCode) => {
+  return dispatch => {
+    dispatch(authStart());
+    const url = '/auth/verityEmail';
+    axiosInstance.post(url, {emailVerificationCode})
+      .then(response => {
+        console.log(response.status);
+          if(response.status === 200){
+            dispatch(emailVerification(true));
+          }else{
+            dispatch(emailVerification(false));
+          }
+      })
+      .catch(err => {
+        console.log(err.response);
+        dispatch(emailVerification(false));
+        // dispatch(authFail(err.response.data.message));
+      });
+  };
+}
+
+const emailVerification =(status) => {
+  return {
+    type: actionTypes.EMAIL_VERIFICATION,
+    status: status
+  }
+}

@@ -10,6 +10,8 @@ const initialState = {
     loading: false,
     authRedirectPath: '/',
     activateEmail: false,
+    verifiedEmail: false,
+    emailVerificationStatus: null
 };
 
 const authStart = (state, action) => {
@@ -26,6 +28,7 @@ const authSuccess = (state, action) => {
 };
 
 const authFail = (state, action) => {
+    console.log(action.error);
     return updateObject(state, {
         error: action.error,
         loading: false
@@ -52,6 +55,18 @@ const returnSignup = (state, action) => {
     return updateObject(state, { activateEmail: false })
 }
 
+const returnLogin = (state, action) => {
+    return updateObject(state, { verifiedEmail: false })
+}
+
+const emailVarification = (state, action) => {
+    if(action.status){
+        return updateObject(state, { emailVerificationStatus: true, loading: false,  verifiedEmail: true, error: null});
+    }else{
+        return updateObject(state, { emailVerificationStatus: false, loading: false, verifiedEmail: true, error: null});
+    }
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START: return authStart(state, action);
@@ -61,6 +76,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state, action);
         case actionTypes.SIGNUP_SUCCESS: return redirectToActivateEmail(state, action);
         case actionTypes.RETURN_SIGNUP: return returnSignup(state, action);
+        case actionTypes.RETURN_LOGIN: return returnLogin(state, action);
+        case actionTypes.EMAIL_VERIFICATION: return emailVarification(state, action);
         default:
             return state;
     }

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import classes from './AuthSignUp.module.scss';
-import { signUpFormData } from './AuthFormData'
-import { updateObject } from '../../shared/utility';
-import { checkValidity } from '../../shared/validation/inputValidation'
-import * as actions from '../../store/actions/index';
-import Button from '../../components/UI/Button/Button';
-import Input from '../../components/UI/Input/Input';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import signUpImage from '../../assets/images/programming1.png'
-import Aux from '../../higherOrderComponent/Aux/Aux';
+import classes from './SignUp.module.scss';
+import { signUpFormData } from '../AuthFormData'
+import { updateObject } from '../../../shared/utility';
+import { checkValidity } from '../../../shared/validation/inputValidation'
+import * as actions from '../../../store/actions/index';
+import Button from '../../../components/UI/Button/Button';
+import Input from '../../../components/UI/Input/Input';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import signUpImage from '../../../assets/images/programming1.png'
+import Aux from '../../../higherOrderComponent/Aux/Aux';
 
 const AuthSignUp = props => {
 
@@ -100,7 +100,7 @@ const AuthSignUp = props => {
   let mainContent = (
     <Aux>
       {form}
-      <Button btnType="Success" disabled={!disabled}> SUBMIT</ Button>
+      <Button btnType="Success" disabled={!disabled}>SUBMIT</ Button>
     </Aux>
   )
   if (props.loading) {
@@ -113,7 +113,7 @@ const AuthSignUp = props => {
         <span>We have sent an email with a confirmation link to your email address. In order to complete the sign-up process, please click the confirmation link.
         If you do not receive a confirmation email, please check your spam folder. Also, please verify that you entered a valid email address in our sign-up form.
         If you need assistance, please contact me at <a href={`mailto: Yanhongmain@gmail.com`} >Yanhongmain@gmail.com</a>.</span>
-        <h4 onClick={props.backToSignUp}>Return to sign-up</h4>
+        <h4 onClick={props.returnSignup}>Return to sign-up</h4>
       </Aux>
     )
   }
@@ -150,7 +150,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     authSignUp: (email, password, firstName, lastName) => dispatch(actions.authSignUp(email, password, firstName, lastName)),
-    backToSignUp : () => dispatch(actions.returnSignup()),
+    returnSignup : () => dispatch(actions.returnSignup()),
     onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   };
 };

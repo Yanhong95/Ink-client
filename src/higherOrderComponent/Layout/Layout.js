@@ -1,4 +1,4 @@
-import Aux from '../Aux/Aux';
+// import Aux from '../Aux/Aux';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 

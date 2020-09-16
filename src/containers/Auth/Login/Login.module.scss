@@ -1,6 +1,6 @@
-@import '../../shared/scss/variables.scss';
-@import '../../shared/scss/typography.scss';
-@import '../../shared/scss/mixin.scss';
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/typography.scss';
+@import '../../../shared/scss/mixin.scss';
 
 .login {
   height: 82vh;
@@ -20,7 +20,6 @@
     grid-row: 1/-1;
     grid-column: 1/5;
     display: grid;
-    justify-content: center;
     padding: 3rem 6rem;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(12, 1fr);
@@ -40,7 +39,7 @@
     h6 {
       @include heading-6-dark;
       color: $color-secondary;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       grid-row: 2/3;
       grid-column: 1/-1;
       text-align: center;
@@ -54,6 +53,12 @@
       justify-content: space-evenly;
       align-items: center;
 
+      h4{
+        @include heading-4-light;
+        cursor: pointer;
+        color: $color-blue;
+      }
+
       button{
         margin-top: 1rem;
       }
@@ -65,7 +70,9 @@
       text-align: center;
       font-size: 1.5rem;
 
+      a,
       p {
+        text-decoration: none;
         display: inline;
         color: $color-blue;
         cursor: pointer;

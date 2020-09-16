@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import classes from './Toolbar.module.scss';
 import Aux from '../../../higherOrderComponent/Aux/Aux';
 import Logo from '../../Logo/Logo';
-import AuthNav from '../../../containers/Auth/AuthNav';
+import AuthNav from '../../../containers//Auth/Nav/AuthNav';
 import NavigationItems from '../NavigationItems/NavigationItems';
 // import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 

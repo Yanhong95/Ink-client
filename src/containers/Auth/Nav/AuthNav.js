@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classes from './AuthNav.module.scss';
-import Aux from '../../higherOrderComponent/Aux/Aux'
-import image from '../../assets/images/ME.jpg'
-import Icon from '../../shared/Icon/Icon'
-import NavigationItem from '../../components/Navigation/NavigationItems/NavigationItem'
+import Aux from '../../../higherOrderComponent/Aux/Aux'
+import image from '../../../assets/images/ME.jpg'
+import Icon from '../../../shared/Icon/Icon'
+import NavigationItem from '../../../components/Navigation/NavigationItems/NavigationItem'
 
 const AuthNav = props => {
 

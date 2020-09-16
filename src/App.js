@@ -5,8 +5,8 @@ import Layout from './higherOrderComponent/Layout/Layout';
 import useScript from './shared/hook/useScript';
 import * as actions from './store/actions/index';
 import Logout from './containers/Auth/AuthLogout';
-const Login = React.lazy(() => import('./containers/Auth/AuthLogin'));
-const SignUp = React.lazy(() => import('./containers/Auth/AuthSignUp'));
+const Login = React.lazy(() => import('./containers/Auth/Login/Login'));
+const SignUp = React.lazy(() => import('./containers/Auth/SignUp/SignUp'));
 const Upload = React.lazy(() => import('./containers/Upload/Upload'));
 const PersonalInfo = React.lazy(() => import('./containers/PersonalInfo/PersonalInfo'));
 const PersonalDoc = React.lazy(() => import('./containers/PersonalDoc/PersonalDoc'));
@@ -26,6 +26,7 @@ const App = props => {
       <Route path="/javascript" render={(props) => <PersonalDoc {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/signUp" render={(props) => <SignUp {...props} />} />
+      <Route path="/verityEmail/:id" render={(props) => <Login {...props} />} />
       <Redirect to="/" />
     </Switch>
   );
