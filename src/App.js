@@ -10,6 +10,7 @@ const SignUp = React.lazy(() => import('./containers/Auth/SignUp/SignUp'));
 const Upload = React.lazy(() => import('./containers/Upload/Upload'));
 const PersonalInfo = React.lazy(() => import('./containers/PersonalInfo/PersonalInfo'));
 const PersonalDoc = React.lazy(() => import('./containers/PersonalDoc/PersonalDoc'));
+const VerifyEmail = React.lazy(() => import('./containers/Auth/VerifyEmail/VerifyEmail'));
 
 const App = props => {
 
@@ -25,8 +26,8 @@ const App = props => {
       <Route path="/algorithm" render={(props) => <PersonalDoc {...props} />} />
       <Route path="/javascript" render={(props) => <PersonalDoc {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
-      <Route path="/signUp" render={(props) => <SignUp {...props} />} />
-      <Route path="/verityEmail/:id" render={(props) => <Login {...props} />} />
+      <Route path="/signup" render={(props) => <SignUp {...props} />} />
+      <Route path="/verityEmail/:id" render={(props) => <VerifyEmail {...props} />} />
       <Redirect to="/" />
     </Switch>
   );

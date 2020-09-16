@@ -14,23 +14,8 @@ import Aux from '../../../higherOrderComponent/Aux/Aux';
 
 const Login = props => {
 
-  // http://localhost:3000/verityEmail/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlhbmhvbmdtYWluQGdtYWlsLmNvbSIsInVzZXJJZCI6IjVmNjAyZmE3ODM5OGU3ZGU3MDUzMDYwMSIsImlhdCI6MTYwMDEzOTE3NX0.4SYZMGP-t2n_HMwK-pHs4odbsxK0x9g4B298M217I0E
-  // console.log(props.location); 
-  // console.log(props.match.params.id);
-  console.log(props.emailVerificationStatus);
-  console.log(props.verifiedEmail);
-  const path = props.location.pathname.split("/")[1];
-  if(!props.verifiedEmail && path === "verityEmail" && props.emailVerificationStatus === null){
-    console.log('verityEmail login component');
-    const emailVerificationCode = props.match.params.id;
-    props.verifyVerificationCode(emailVerificationCode);
-  }
-
   const [loginForm, setLoginForm] = useState(loginFormData);
   const [switchToSignup, setSwitchToSignup] = useState(false);
-  const [message, setMessage] = useState(null);
-
-
 
   const inputChangedHandler = (event, controlName) => {
     const updatedControls = updateObject(loginForm, {
@@ -79,29 +64,21 @@ const Login = props => {
 
   // use Array.prototype.some to test if there exists at least one element that have errorMessage. 
   // It will stop looping when some element that matches your function is found:
-  Object.values(loginForm).some(input => { 
+  Object.values(loginForm).some(input => {
     errorMessages = input.errorMessage ? <h6>{input.errorMessage}</h6> : null;
     disabled = input.valid && disabled;
     return input.errorMessage;
   });
 
-  if (message) {
-    errorMessages = <h6>{message}</h6>;
-  }
-  
   if (props.error) {
-    const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-    errorMessages = <h6>{backEndError}</h6>;
+    // const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+    errorMessages = <h6>{props.error}</h6>;
   }
 
+  // redirect
   let redirect = null;
-  if (switchToSignup) {
-    redirect = <Redirect to="/signup" />
-  }
-
-  if (props.isAuthenticated) {
-    redirect = <Redirect to={props.authRedirectPath} />
-  }
+  if (props.isAuthenticated) { redirect = <Redirect to={props.authRedirectPath} /> }
+  if (switchToSignup) { redirect = <Redirect to="/signup" /> }
 
   let mainContent = (
     <Aux>
@@ -114,34 +91,10 @@ const Login = props => {
     mainContent = <Spinner />
   }
 
-  if(props.verifiedEmail){
-    if(props.emailVerificationStatus){
-      mainContent = (
-        <Aux>
-          <span style={{color:'#2a7c99'}}>Thanks! Your email has been successfully verified. Please
-          <h4 onClick={props.returnLogin}>Return to login</h4></span>
-        </Aux>
-      )
-    }else{
-      mainContent = (
-        <Aux>
-          <span style={{color:'#ef3f61'}}>Opps. Your email verification seems failed, Please
-          <h4 onClick={props.returnLogin}>Return to login </h4>
-          and we will send you another verification email, Sorry for the inconvenience.</span>
-        </Aux>
-      )
-    }
-  }
-
-  if(!props.verifiedEmail){
-    redirect = <Redirect to="/login" />
-  }
-
-
   return (
     <div className={classes.login}>
       <div className={classes.login_content}>
-        {props.emailVerificationStatus?  <h2>Verify Email</h2> : <h2>Login</h2>}
+        {props.emailVerificationStatus ? <h2>Verify Email</h2> : <h2>Login</h2>}
         {redirect}
         {errorMessages}
         <form onSubmit={submitHandler}>
@@ -162,15 +115,11 @@ const mapStateToProps = state => {
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null,
     authRedirectPath: state.auth.authRedirectPath,
-    verifiedEmail: state.auth.verifiedEmail,
-    emailVerificationStatus: state.auth.emailVerificationStatus
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    returnLogin: () => dispatch(actions.returnLogin()),
-    verifyVerificationCode: (emailVerificationCode) => dispatch(actions.verifyVerificationCode(emailVerificationCode)),
     authLogin: (email, password) => dispatch(actions.authLogin(email, password)),
     onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   };

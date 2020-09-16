@@ -11,7 +11,7 @@ const AuthNav = props => {
 
   let currDisplay = (
     <div className={classes.authNav}>
-      <NavigationItem link="/signUp">
+      <NavigationItem link="/signup">
         <Icon name="people-outline"></Icon>
       </NavigationItem>
       <NavigationItem link="/login">

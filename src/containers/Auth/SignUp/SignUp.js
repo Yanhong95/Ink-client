@@ -35,6 +35,8 @@ const AuthSignUp = props => {
     if (signUpForm.password.value !== signUpForm.confirmPassword.value) {
       setMessage('Your password and confirmation password do not match. Please try again');
       return;
+    }else{
+      setMessage(null);
     }
     props.authSignUp(signUpForm.email.value, signUpForm.password.value, signUpForm.firstName.value, signUpForm.lastName.value);
   }
@@ -80,8 +82,8 @@ const AuthSignUp = props => {
   }
 
   if (props.error) {
-    const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-    errorMessages = <h6>{backEndError}</h6>;
+    // const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+    errorMessages = <h6>{props.error}</h6>;
   }
 
   let redirect = null;

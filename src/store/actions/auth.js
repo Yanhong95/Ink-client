@@ -100,7 +100,7 @@ export const authLogin = (email, password) => {
       })
       .catch(err => {
         console.log(err);
-        dispatch(authFail(err.response.data));
+        dispatch(authFail(err.response.data.message));
       });
   };
 };
@@ -136,7 +136,6 @@ export const verifyVerificationCode = (emailVerificationCode) => {
     const url = '/auth/verityEmail';
     axiosInstance.post(url, {emailVerificationCode})
       .then(response => {
-        console.log(response.status);
           if(response.status === 200){
             dispatch(emailVerification(true));
           }else{
