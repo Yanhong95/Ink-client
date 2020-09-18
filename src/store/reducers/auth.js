@@ -23,12 +23,13 @@ const authSuccess = (state, action) => {
         token: action.idToken,
         userId: action.userId,
         error: null,
-        loading: false
+        loading: false,
+        isAdmin: action.isAdmin
     });
 };
 
 const authFail = (state, action) => {
-    console.log(action.error);
+    // console.log(action.error);
     return updateObject(state, {
         error: action.error,
         loading: false
@@ -36,7 +37,13 @@ const authFail = (state, action) => {
 };
 
 const authLogout = (state, action) => {
-    return updateObject(state, { token: null, userId: null });
+    return updateObject(state, { 
+        token: null, 
+        userId: null, 
+        isAdmin: false, 
+        activateEmail: false,
+        verifiedEmail: false,
+        emailVerificationStatus: null });
 };
 
 const setAuthRedirectPath = (state, action) => {

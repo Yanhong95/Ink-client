@@ -1,0 +1,34 @@
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/typography.scss';
+
+.note {
+  padding: 4rem;
+  color: $color-primary-light;
+  font-size: 1.5rem;
+
+  a {
+    color: $color-blue;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-blue-light;
+    }
+  }
+
+  code{
+    font-family:  "Monaco", "Menlo", "Consolas", "Arial", "Times New Roman";
+  }
+
+  pre{
+    padding: 3rem 3rem 3rem 3rem;
+  }
+
+  h4{
+    @include heading-4-white;
+    padding: 2rem 0 2rem 0;
+  }
+
+  strong{
+    padding: 1rem 1rem 1rem 1rem;
+  }
+}

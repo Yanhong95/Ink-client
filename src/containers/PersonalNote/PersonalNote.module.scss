@@ -1,0 +1,46 @@
+@import '../../shared/scss/variables.scss';
+@import '../../shared/scss/mixin.scss';
+@import '../../shared/scss/typography.scss';
+
+
+.note {
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: overflow;
+
+  // @media only screen and (max-width: $bp-medium) {
+  //   grid-template-columns: repeat(4, 1fr);
+  // }
+
+  &_left {
+    flex: 0 0 20%;
+    background-color: $color-primary-dark;
+    height: 100vh;
+    height: auto;
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -ms-overflow-style: none;
+    scrollbar-width: none;  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+  }
+
+  &_right {
+    flex: 1;
+    background-color: $color-primary;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+}

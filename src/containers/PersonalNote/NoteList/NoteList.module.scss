@@ -1,0 +1,79 @@
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/mixin.scss';
+@import '../../../shared/scss/typography.scss';
+
+.topicList {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &_topic {
+    height: 5vh;
+    line-height: 5vh;
+    width: 90%;
+    @include heading-3-normal;
+    color: $color-primary-light;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+
+    &_name {
+      width: 14vw;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &:hover {
+      color: $color-blue;
+      cursor: pointer;
+      width: 96%;
+      margin-left: 2%;
+      margin-right: 2%;
+      padding-left: 4%;
+      padding-right: 4%;
+    }
+
+    &:not(:last-child) {
+      border-top: 0.05em;
+      border-bottom: 0.05em solid #4a5157;
+    }
+
+    &_note{
+      height: 4vh;
+      line-height: 4vh;
+      @include heading-6-dark ;
+      color: $color-primary-light;
+      padding-left: 5%;
+      padding-right: 5%;
+      background-color: #393e46;
+      
+      &_text{
+        width: 17vw;
+        @media only screen and (max-width: $bp-medium) {
+          width: 18vw;
+        }
+        overflow: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        &:hover {
+          color: $color-blue;
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+}

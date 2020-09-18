@@ -8,3 +8,8 @@ export {
   returnLogin,
   verifyVerificationCode
 } from './auth';
+
+export {
+  loadTopics,
+  loadCurrentNote,
+}from './note'

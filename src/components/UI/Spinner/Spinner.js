@@ -1,7 +1,6 @@
 import React from 'react';
 
 import classes from './Spinner.module.scss';
-import Aux from '../../../higherOrderComponent/Aux/Aux'
 
 const Spinner = () => (
     <div className="spinner">

@@ -10,9 +10,9 @@ const Layout = props => {
 
     const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
 
-    const sideDrawerClosedHandler = () => {
-        setSideDrawerIsVisible(false);
-    }
+    // const sideDrawerClosedHandler = () => {
+    //     setSideDrawerIsVisible(false);
+    // }
 
     const sideDrawerToggleHandler = () => {
         setSideDrawerIsVisible(!sideDrawerIsVisible);
@@ -21,22 +21,19 @@ const Layout = props => {
     return (
         <div className={classes.body}>
             <div className={classes.headerWrapper}>
-            <div className={classes.header}>
-                <Toolbar
-                    isAdmin={props.isAdmin}
-                    drawerToggleClicked={sideDrawerToggleHandler} />
-                {/* <SideDrawer
+                <div className={classes.header}>
+                    <Toolbar
+                        isAdmin={props.isAdmin}
+                        drawerToggleClicked={sideDrawerToggleHandler} />
+                    {/* <SideDrawer
                     isAuth={props.isAuthenticated}
                     open={sideDrawerIsVisible}
                     closed={sideDrawerClosedHandler} /> */}
+                </div>
             </div>
-            </div>
-
-
             <div className={classes.main}>
                 {props.children}
             </div>
-
         </div>
     )
 }

@@ -35,6 +35,18 @@
   color: $color-grey-dark-1;
 }
 
+@mixin heading-3-normal {
+  font-size: 2.5vmin;
+  font-weight: lighter;
+  color: $color-grey-dark-1;
+}
+
+@mixin heading-4-white {
+  @extend %heading;
+  font-size: 2vmin;;
+  color: $color-grey-light-2;
+}
+
 
 @mixin heading-4-light {
   @extend %heading;

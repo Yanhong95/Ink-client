@@ -8,11 +8,19 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token, userId, isAdmin) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
     idToken: token,
-    userId: userId
+    userId: userId,
+    isAdmin: isAdmin
+  };
+};
+
+export const authFail = (error) => {
+  return {
+    type: actionTypes.AUTH_FAIL,
+    error: error
   };
 };
 
@@ -22,13 +30,6 @@ export const signUpSuccess = (userId) => {
     userId: userId
   }
 }
-
-export const authFail = (error) => {
-  return {
-    type: actionTypes.AUTH_FAIL,
-    error: error
-  };
-};
 
 export const logout = () => {
   localStorage.removeItem('token');
@@ -95,7 +96,7 @@ export const authLogin = (email, password) => {
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.userId);
-        dispatch(authSuccess(response.data.idToken, response.data.userId));
+        dispatch(authSuccess(response.data.idToken, response.data.userId, response.data.isAdmin));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch(err => {

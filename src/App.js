@@ -9,7 +9,7 @@ const Login = React.lazy(() => import('./containers/Auth/Login/Login'));
 const SignUp = React.lazy(() => import('./containers/Auth/SignUp/SignUp'));
 const Upload = React.lazy(() => import('./containers/Upload/Upload'));
 const PersonalInfo = React.lazy(() => import('./containers/PersonalInfo/PersonalInfo'));
-const PersonalDoc = React.lazy(() => import('./containers/PersonalDoc/PersonalDoc'));
+const PersonalNote = React.lazy(() => import('./containers/PersonalNote/PersonalNote'));
 const VerifyEmail = React.lazy(() => import('./containers/Auth/VerifyEmail/VerifyEmail'));
 
 const App = props => {
@@ -23,8 +23,8 @@ const App = props => {
   let routes = (
     <Switch>
       <Route path="/" exact render={(props) => <PersonalInfo {...props} />} />
-      <Route path="/algorithm" render={(props) => <PersonalDoc {...props} />} />
-      <Route path="/javascript" render={(props) => <PersonalDoc {...props} />} />
+      <Route path="/algorithm"  key="algorithm" render={(props) => <PersonalNote {...props} />} />
+      <Route path="/javascript"  key="javascript" render={(props) => <PersonalNote {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/signup" render={(props) => <SignUp {...props} />} />
       <Route path="/verityEmail/:id" render={(props) => <VerifyEmail {...props} />} />
@@ -35,8 +35,8 @@ const App = props => {
     routes = (
       <Switch>
         <Route path="/" exact render={(props) => <PersonalInfo {...props} />} />
-        <Route path="/algorithm" render={(props) => <PersonalDoc {...props} />} />
-        <Route path="/javascript" render={(props) => <PersonalDoc {...props} />} />
+        <Route path="/algorithm" key="algorithm" render={(props) => <PersonalNote {...props} />} />
+        <Route path="/javascript" key="javascript" render={(props) => <PersonalNote {...props} />} />
         <Route path="/logout" component={Logout} />
         {props.isAdmin ? <Route path="/upload" render={(props) => <Upload {...props} />} /> : null}
         <Redirect to="/" />

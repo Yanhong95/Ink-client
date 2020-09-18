@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+// import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import classes from './Toolbar.module.scss';
 import Aux from '../../../higherOrderComponent/Aux/Aux';
 import Logo from '../../Logo/Logo';
