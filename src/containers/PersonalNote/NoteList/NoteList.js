@@ -23,22 +23,22 @@ const NoteList = props => {
 
   let topicList = null;
   if (props.currentTopic) {
-    topicList = props.currentTopic.map(subCategories => {
+    topicList = props.currentTopic.map(subcategories => {
       return (
-        <Aux key={subCategories.subcategoryId}>
-          <div className={classes.topicList_topic} onClick={() => triggerTheTopic(subCategories.subcategoryId)}>
-            <div className={classes.topicList_topic_name}>{subCategories.name}</div>
-            {subList.includes(subCategories.subcategoryId) ?
+        <Aux key={subcategories._id}>
+          <div className={classes.topicList_topic} onClick={() => triggerTheTopic(subcategories._id)}>
+            <div className={classes.topicList_topic_name}>{subcategories.name}</div>
+            {subList.includes(subcategories._id) ?
               <div className={classes.topicList_topic_close}>&times;</div> :
               <div className={classes.topicList_topic_open}>&#43;</div>}
           </div>
-          {subList.includes(subCategories.subcategoryId) ? 
-            subCategories.notes.map(note=> {
-              // onClick={() => props.loadCurrentNote(note.noteId)}
+          {subList.includes(subcategories._id) ? 
+            subcategories.notes.map(note=> {
+              // onClick={() => props.loadCurrentNote(note._id)}
               return (
-                <div key={note.noteId} className={classes.topicList_topic_note} >
+                <div key={note._id} className={classes.topicList_topic_note} >
                   <div className={classes.topicList_topic_note_text}>
-                    {note.noteName}
+                    {note.name}
                   </div>
                 </div>
               );
@@ -63,7 +63,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadTopics: (type) => dispatch(actions.loadTopics(type)),
     loadCurrentNote: (noteId) => dispatch(actions.loadCurrentNote(noteId))
   };
 };

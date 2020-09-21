@@ -28,6 +28,8 @@ const App = props => {
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/signup" render={(props) => <SignUp {...props} />} />
       <Route path="/verityEmail/:id" render={(props) => <VerifyEmail {...props} />} />
+      {/* toberemoved */}
+      <Route path="/upload" render={(props) => <Upload {...props} />} /> 
       <Redirect to="/" />
     </Switch>
   );

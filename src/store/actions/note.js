@@ -1,7 +1,5 @@
-// import { axiosInstance } from '../../shared/utility';
-
+import { axiosInstance } from '../../shared/utility';
 import * as actionTypes from './actionTypes';
-
 
 export const loadTopicStart = () => {
   return {
@@ -9,11 +7,11 @@ export const loadTopicStart = () => {
   };
 };
 
-export const loadTopicSuccess = (type, topics) => {
+export const loadTopicSuccess = (type, topic) => {
   return {
     type: actionTypes.LOAD_TOPIC_SUCCESS,
     topicTpye: type,
-    topics: topics
+    topics: topic
   };
 };
 
@@ -25,140 +23,19 @@ export const loadTopicFail = (error) => {
 };
 
 // type: algorithmTopics, javascripTopics, 
-export const loadTopics = (type) => {
+export const loadTopic = (type) => {
   return dispatch => {
-    console.log('loadTopics');
     dispatch(loadTopicStart());
-    // const url = '/note/topics';
-    // axiosInstance.post(url, {type})
-    //   .then(response => {
-    //     dispatch(loadTopicSuccess(response.data.lists));
-    //   })
-    //   .catch(err => {
-    //     dispatch(loadTopicFail(err.response.data.message));
-    //   });
-    const algorithmTopics = [
-      {
-        name: 'Syntax',
-        subcategoryId: 'topicId1',
-        notes: [
-          {
-            noteId: 'asdasf',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      },
-      {
-        name: 'Array',
-        subcategoryId: 'topicId2',
-        notes: [
-          {
-            noteId: 'asdasf432',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt21',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      },
-      {
-        name: 'BFS',
-        subcategoryId: 'topicId3',
-        notes: [
-          {
-            noteId: 'asdasf43',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt314',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      },
-      {
-        name: 'DFS',
-        subcategoryId: 'topicId4',
-        notes: [
-          {
-            noteId: 'asdasf',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      },
-      {
-        name: 'BP',
-        subcategoryId: 'topicId5',
-        notes: [
-          {
-            noteId: 'asdasf131',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasf132',
-            noteName: '1. twoSum441',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasf133',
-            noteName: '1. twoSum314ASASFSDFSDGSHHDDAFAFAAGSG',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt31',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      },
-      {
-        name: 'Iteration',
-        subcategoryId: 'topicId6',
-        notes: [
-          {
-            noteId: 'asdasf',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      },
-      {
-        name: 'Backtrack',
-        subcategoryId: 'topicId7',
-        notes: [
-          {
-            noteId: 'asdasfw43',
-            noteName: '1. twoSum',
-            noteUrl: ''
-          },
-          {
-            noteId: 'asdasfrewt',
-            noteName: '2. threeSum',
-            noteUrl: ''
-          }]
-      }
-
-    ]
-    dispatch(loadTopicSuccess(type, algorithmTopics));
+    const url = '/note/loadTopic';
+    axiosInstance.post(url, { type })
+      .then(response => {
+        dispatch(loadTopicSuccess( type, response.data.subcategories));
+      })
+      .catch(err => {
+        dispatch(loadTopicFail(err.response.data.message));
+      });
   };
 }
-
 
 export const loadCurrentNoteStart = () => {
   return {
@@ -185,7 +62,7 @@ export const loadCurrentNoteFail = (error) => {
 export const loadCurrentNote = (noteUrl) => {
   return dispatch => {
     dispatch(loadCurrentNoteStart());
-    // const url = '/note/note';
+    // const url = '/note/loadNote';
     // axiosInstance.post(url, {category})
     //   .then(response => {
     //     dispatch(loadCurrentNoteSuccess(response.data.notes));
@@ -193,7 +70,14 @@ export const loadCurrentNote = (noteUrl) => {
     //   .catch(err => {
     //     dispatch(loadCurrentNoteFail(err.response.data.message));
     //   });
-
-    dispatch(loadCurrentNoteSuccess(noteUrl, ));
+    dispatch(loadCurrentNoteSuccess(noteUrl,));
   };
 } 
+
+
+export const changeToCurrentTopic = (type) => {
+  return {
+    type: actionTypes.CHANGE_TO_CURRENT_TOPIC,
+    topic: type
+  };
+}

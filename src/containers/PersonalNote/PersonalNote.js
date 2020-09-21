@@ -12,21 +12,12 @@ import classes from './PersonalNote.module.scss';
 const PersonalNote = props => {
 
   useEffect(() => {
-    // console.log(props);
-    switch (props.location.pathname) {
-      case '/algorithm': {
-        if (!props.algorithmTopics) {
-          props.loadTopics('algorithmTopics');
-        }
-        break;
-      }
-      case '/javascript': {
-        if (!props.javascripTopics) {
-          props.loadTopics('javascripTopics');
-        }
-        break;
-      }
-      default: break;
+    const pathname = props.location.pathname;
+    const currentTopic = pathname.split('/')[1];
+    if (!props[currentTopic]) {
+      props.loadTopic(currentTopic);
+    }else{
+      props.changeToCurrentTopic(currentTopic);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.location.pathname]);
@@ -59,14 +50,15 @@ const mapStateToProps = state => {
     loadingTopics: state.note.loadingTopics,
     loadingCurrentNote: state.note.loadingCurrentNote,
     error: state.note.error,
-    algorithmTopics: state.note.algorithmTopics ? state.note.algorithmTopics : null,
-    javascripTopics: state.note.javascripTopics ? state.note.javascripTopics : null,
+    algorithm: state.note.algorithm ? state.note.algorithm : null,
+    javascript: state.note.javascript ? state.note.javascript : null,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadTopics: (type) => dispatch(actions.loadTopics(type)),
+    loadTopic: (type) => dispatch(actions.loadTopic(type)),
+    changeToCurrentTopic: (type) => dispatch(actions.changeToCurrentTopic(type))
   };
 };
 

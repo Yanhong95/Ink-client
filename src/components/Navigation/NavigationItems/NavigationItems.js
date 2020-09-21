@@ -17,6 +17,10 @@ const navigationItems = (props) => {
             {props.isAdmin ? <NavigationItem link="/upload">
                 <Icon name="cloud-upload-outline"></Icon>
             </NavigationItem> : null}
+            {/* toberemoved */}
+            <NavigationItem link="/upload">
+                <Icon name="cloud-upload-outline"></Icon>
+            </NavigationItem>
         </Aux>
     )
 

@@ -6,7 +6,7 @@ const initialState = {
   currentTopic: null,
   currentNote: null,
   loadingTopics: false,
-  loadingSubCategory: false,
+  loadingSubcategory: false,
   loadingCurrentNote: false,
   error: null
 };
@@ -16,6 +16,7 @@ const loadTopicStart = (state, action) => {
 };
 
 const loadTopicSuccess = (state, action) => {
+  console.log(action.topicTpye);
   return updateObject(state, {
     currentTopic: action.topics,
     error: null,
@@ -39,10 +40,17 @@ const loadFail = (state, action) => {
   return updateObject(state, {
     error: action.error,
     loadingTopics: false,
-    loadingSubCategory: false,
+    loadingSubcategory: false,
     loadingCurrentNote: false,
   });
 };
+
+const changeToCurrentTopic = (state, action) => {
+  const newCurrentTopic = [...state[action.topic]];
+  return updateObject(state, {
+    currentTopic : newCurrentTopic
+  })
+}
 
 
 const reducer = (state = initialState, action) => {
@@ -54,6 +62,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LOAD_CURRENT_NOTE_START: return loadCurrentNoteStart(state, action);
     case actionTypes.LOAD_CURRENT_NOTE_SUCCESS: return loadCurrentNoteSuccess(state, action);
     case actionTypes.LOAD_CURRENT_NOTE_FAIL: return loadFail(state, action);
+
+    case actionTypes.CHANGE_TO_CURRENT_TOPIC: return changeToCurrentTopic(state, action);
     default:
       return state;
   }

@@ -2,23 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-// import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import authReducer from './store/reducers/auth';
 import noteReducer from './store/reducers/note';
-
-// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+import updateReducer from './store/reducers/update';
 
 const rootReducer = combineReducers({
   note: noteReducer,
-  auth: authReducer
+  auth: authReducer,
+  update: updateReducer
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
+const store = createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk)
+));
 
 const app = (
   <React.StrictMode>

@@ -10,6 +10,12 @@ export {
 } from './auth';
 
 export {
-  loadTopics,
+  loadTopic,
   loadCurrentNote,
+  changeToCurrentTopic,
 }from './note'
+
+
+export {
+  loadCatalog
+}from './update'

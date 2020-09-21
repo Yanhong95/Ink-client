@@ -2,7 +2,8 @@
 $color-primary-light: #B7B7B7; // content text
 $color-primary: #363B40;  // content background
 $color-primary-dark:  #2E3033; // secondary menu
-$color-primary-darkest: #202124;// primary menu
+$color-primary-darkest: #202124;// primary menu 
+$color-primary-darkest-bcg: #25272b;
 
 $color-grey-light-1: #F1EFEE;
 $color-grey-light-2: #d6e0f0;
@@ -12,8 +13,13 @@ $color-grey-dark-2: #393b44;
 
 $color-blue-lightest:#E0EEFF;
 $color-blue-light:#6bc1e0;
-$color-blue: #40A4C8;
+$color-blue: #40A4C8; 
 $color-blue-dark:  #2a7c99;
+
+$color-liner-yellow: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+$color-liner-blue: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+$color-liner-red: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$color-liner-blue-grey: linear-gradient(135deg, #c3cfe2 0%, #c3cfe2 100%);
 
 $color-secondary: #ef3f61;
 $color-secondary-dark: #ff0b55;
@@ -23,6 +29,9 @@ $color-third-1:#f8b195;
 $color-third-2:#f67280;
 $color-third-3:#c06c84;
 $color-third-4:#6c567b;
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
 
 // FONT VARIABLES
 $font-primary: 'Roboto', 'Nunito', sans-serif, 'Segoe UI', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans';
