@@ -6,7 +6,7 @@ export {
   authCheckState,
   returnSignup,
   returnLogin,
-  verifyVerificationCode
+  verifyVerificationCode,
 } from './auth';
 
 export {
@@ -17,5 +17,6 @@ export {
 
 
 export {
-  loadCatalog
+  loadCatalog,
+  uploadFile
 }from './update'

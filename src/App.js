@@ -18,7 +18,12 @@ const App = props => {
 
   const { onTryAutoSignup } = props;
 
-  useEffect(() => onTryAutoSignup(), [onTryAutoSignup])
+  useEffect(() => {
+    onTryAutoSignup();
+    console.log('here');
+
+  }, [onTryAutoSignup])
+    
 
   let routes = (
     <Switch>

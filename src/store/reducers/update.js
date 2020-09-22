@@ -20,13 +20,18 @@ const loadCatalogFail = (state, action) => {
     error: action.error
   });
 }
+const uploadFileStart = (state, action) => {
+  return updateObject(state, {
+    loading: true
+  });
+}
 
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_CATALOG_SUCCESS: return loadCatalogSuccess(state, action);
     case actionTypes.LOAD_CATALOG_FAIL: return loadCatalogFail(state, action);
-    
+    case actionTypes.UPLOAD_FILE_START: return uploadFileStart(state,action);
 
     default:
       return state;

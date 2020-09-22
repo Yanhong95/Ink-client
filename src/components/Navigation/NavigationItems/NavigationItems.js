@@ -4,7 +4,7 @@ import NavigationItem from './NavigationItem';
 import Aux from '../../../higherOrderComponent/Aux/Aux'
 import Icon from '../../../shared/Icon/Icon';
 const navigationItems = (props) => {
-
+    console.log(props.isAdmin);
 
     return (
         <Aux>

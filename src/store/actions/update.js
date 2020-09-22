@@ -29,5 +29,35 @@ export const loadCatalog = () => {
   };
 };
 
+export const uploadFileStart = () => {
+  return {
+    type: actionTypes.UPLOAD_FILE_START,
+  };
+};
+
+export const uploadFileSuccess = () => {
+  return {
+    type: actionTypes.UPLOAD_FILE_SUCCESS,
+
+  };
+};
+
+export const uploadFileFail = (error) => {
+  return {
+    type: actionTypes.UPLOAD_FILE_FAIL,
+    error: error
+  };
+};
+
+export const uploadFile = (uploadFile, token) => {
+  return dispatch =>{
+    console.log(uploadFile);
+    console.log(token);
+    dispatch(uploadFileStart());
+    // dispatch(uploadFileSuccess());
+    // dispatch(uploadFileFail());
+  }
+}
+
 
 

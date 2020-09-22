@@ -96,6 +96,8 @@ export const authLogin = (email, password) => {
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.userId);
+        localStorage.setItem('isAdmin', response.data.isAdmin);
+        console.log(response.data.isAdmin);
         dispatch(authSuccess(response.data.idToken, response.data.userId, response.data.isAdmin));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
@@ -116,6 +118,8 @@ export const setAuthRedirectPath = (path) => {
 export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem('token');
+    console.log(localStorage.getItem('expirationDate'));
+
     if (!token) {
       dispatch(logout());
     } else {
@@ -124,7 +128,9 @@ export const authCheckState = () => {
         dispatch(logout());
       } else {
         const userId = localStorage.getItem('userId');
-        dispatch(authSuccess(token, userId));
+        const isAdmin = localStorage.getItem('isAdmin');
+        console.log(userId);
+        dispatch(authSuccess(token, userId, isAdmin));
         dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
       }
     }

@@ -88,6 +88,10 @@
       z-index: 1;
       color:$color-blue-light;
 
+      @media only screen and (max-width: $bp-medium) {
+        height: 100%
+      }
+
       &:focus {
         outline: none;
         background-color: $color-primary-darkest;
@@ -268,7 +272,7 @@
     justify-content: center;
     position: relative;
     @include heading-4-white;
-    font-size: large;
+    font-size: 2rem;
     @media only screen and (max-width: $bp-medium) {
       grid-row: 6/7;
       grid-column: 1/-1;
