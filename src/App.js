@@ -20,8 +20,6 @@ const App = props => {
 
   useEffect(() => {
     onTryAutoSignup();
-    console.log('here');
-
   }, [onTryAutoSignup])
     
 

@@ -8,7 +8,7 @@ import { checkValidity } from '../../../shared/validation/inputValidation'
 import * as actions from '../../../store/actions/index';
 import Button from '../../../components/UI/Button/Button';
 import Input from '../../../components/UI/Input/Input';
-import Spinner from '../../../components/UI/Spinner/Spinner';
+import SpinnerCircle from '../../../components/UI/Spinner/SpinnerCircle';
 import loginImage from '../../../assets/images/programming2.png'
 import Aux from '../../../higherOrderComponent/Aux/Aux';
 
@@ -88,7 +88,7 @@ const Login = props => {
   )
 
   if (props.loading) {
-    mainContent = <Spinner />
+    mainContent = <SpinnerCircle />
   }
 
   return (

@@ -1,15 +1,23 @@
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/typography.scss';
+
+
 .Modal {
     position: fixed;
     z-index: 500;
     background-color: white;
-    width: 70%;
-    border: 1px solid #ccc;
+    border-radius: 1rem;
     box-shadow: 1px 1px 1px black;
+    background: $color-liner-yellow;
     padding: 16px;
-    left: 15%;
-    top: 30%;
+    top: 40%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    text-align: center;
+    @include heading-2-light;
+    font-size: 4vmin;;
+    color: $color-blue-dark
+
 }
 
 @media (min-width: 600px) {

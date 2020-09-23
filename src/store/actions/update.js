@@ -1,6 +1,6 @@
 import { axiosInstance } from '../../shared/utility';
 import * as actionTypes from './actionTypes';
-
+import {S3Object, getSignedURL, uploadFileToS3} from '../../shared/S3/S3'
 
 export const loadCatalogSuccess = (catalog) => {
   return {
@@ -18,7 +18,7 @@ export const loadCatalogFail = (error) => {
 
 export const loadCatalog = () => {
   return dispatch => {
-    const url = '/update/loadCatalog';
+    const url = '/note/loadCatalog';
     axiosInstance.get(url)
       .then(response => {
         dispatch(loadCatalogSuccess(response.data.catalog));
@@ -35,10 +35,10 @@ export const uploadFileStart = () => {
   };
 };
 
-export const uploadFileSuccess = () => {
+export const uploadFileSuccess = (message) => {
   return {
     type: actionTypes.UPLOAD_FILE_SUCCESS,
-
+    message: message
   };
 };
 
@@ -49,13 +49,34 @@ export const uploadFileFail = (error) => {
   };
 };
 
+// todo handle error
 export const uploadFile = (uploadFile, token) => {
-  return dispatch =>{
+  return async dispatch => {
     console.log(uploadFile);
     console.log(token);
     dispatch(uploadFileStart());
-    // dispatch(uploadFileSuccess());
-    // dispatch(uploadFileFail());
+    try {
+      const uploadFolder = `${S3Object.noteFolder}/${uploadFile.topic}/${uploadFile.subcategory}`
+      const resObject = await getSignedURL(uploadFolder, uploadFile.file.name, uploadFile.file.type, token);
+      const fileURL = await uploadFileToS3(uploadFolder, uploadFile.file, resObject);
+      console.log(resObject);
+      console.log(fileURL);
+      const res = await axiosInstance.post('/note/addNote', 
+      {
+        topic: uploadFile.topic,
+        subcategory: uploadFile.subcategory,
+        fileURL: fileURL,
+        noteName: uploadFile.file.name
+      },
+      { headers: {
+          Authorization: 'Bearer ' + token,
+        }
+      });
+      // console.log(res.data);
+      dispatch(uploadFileSuccess(res.data.message));
+    } catch (err) {
+      dispatch(uploadFileFail(err.response ? err.response.data.message : err.message));
+    }
   }
 }
 

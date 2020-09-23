@@ -3,7 +3,7 @@ import NoteList from './NoteList/NoteList'
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import CurrentNote from './CurrentNote/CurrentNote'
-import Spinner from '../../components/UI/Spinner/Spinner'
+import SpinnerCircle from '../../components/UI/Spinner/SpinnerCircle'
 import classes from './PersonalNote.module.scss';
 //import Aux from '../../higherOrderComponent/Aux/Aux';
 //import { useDispatch, useSelector } from 'react-redux';
@@ -25,14 +25,15 @@ const PersonalNote = props => {
 
   let leftNav;
   if (props.loadingTopics) {
-    leftNav = <Spinner />
+    leftNav = <div className={classes.note_left_spinner}><SpinnerCircle /></div>
   } else {
     leftNav = <NoteList />
+    
   }
 
   let rightNav;
   if (props.loadingCurrentNote) {
-    rightNav = <div className={classes.note_right_spinner} ><Spinner /></div>
+    rightNav = <SpinnerCircle/>
   } else {
     rightNav = <CurrentNote />
   }

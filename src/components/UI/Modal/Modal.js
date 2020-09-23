@@ -1,15 +1,11 @@
 import React from 'react';
 
-import classes from './Modal.css';
-import Aux from '../../../hoc/Aux/Aux';
-import Backdrop from '../Backdrop/Backdrop';
+import classes from './Modal.module.scss';
+import Aux from '../../../higherOrderComponent/Aux/Aux'
+import Backdrop from '../Backdrop/Backdrop'
 
-const modal = props => {
+const Modal = props => {
 
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return nextProps.show !== props.show || nextProps.children !== props.children;
-    // }
 
     return (
         <Aux>
@@ -26,4 +22,4 @@ const modal = props => {
     )
 }
 
-export default React.memo(modal, (prevProps, nextProps) => nextProps.show === prevProps.show && nextProps.children === prevProps.children);
+export default React.memo(Modal, (prevProps, nextProps) => nextProps.show === prevProps.show && nextProps.children === prevProps.children);

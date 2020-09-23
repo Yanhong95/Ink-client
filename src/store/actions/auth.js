@@ -35,6 +35,7 @@ export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
   localStorage.removeItem('userId');
+  localStorage.removeItem('isAdmin');
   return {
     type: actionTypes.AUTH_LOGOUT
   };
@@ -118,8 +119,7 @@ export const setAuthRedirectPath = (path) => {
 export const authCheckState = () => {
   return dispatch => {
     const token = localStorage.getItem('token');
-    console.log(localStorage.getItem('expirationDate'));
-
+    // console.log(localStorage.getItem('expirationDate'));
     if (!token) {
       dispatch(logout());
     } else {
@@ -129,7 +129,7 @@ export const authCheckState = () => {
       } else {
         const userId = localStorage.getItem('userId');
         const isAdmin = localStorage.getItem('isAdmin');
-        console.log(userId);
+        // console.log(userId);
         dispatch(authSuccess(token, userId, isAdmin));
         dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
       }

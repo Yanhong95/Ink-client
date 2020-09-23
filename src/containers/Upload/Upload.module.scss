@@ -85,7 +85,6 @@
       border-radius: 1rem;
       padding: 0 5%;
       background-color: #2b2d30;
-      z-index: 1;
       color:$color-blue-light;
 
       @media only screen and (max-width: $bp-medium) {
@@ -108,7 +107,7 @@
       font-size: 2.5vmin;
       font-weight: 500;
       font-family: sans-serif;
-      z-index: 100;
+      z-index: 1;
     }
   }
 
@@ -282,7 +281,7 @@
       color: $color-secondary;
     }
 
-    &_message{
+    &_success{
       color: $color-blue;
     }
 
