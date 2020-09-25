@@ -10,7 +10,9 @@ const initialState = {
   loadingSubcategory: false,
   loadingCurrentNote: false,
   uploadNewNote: false,
-  error: null
+  error: null,
+
+  loadedNotes: {}
 };
 
 const loadTopicStart = (state, action) => {
@@ -32,11 +34,14 @@ const loadCurrentNoteStart = (state, action) => {
 };
 
 const loadCurrentNoteSuccess = (state, action) => {
+  const newLoadedNotes = updateObject(state.loadedNotes, { [action.nodeId]: action.content});
+  // console.log(newLoadedNotes);
   return updateObject(state, {
     error: null,
     loadingCurrentNote: false,
     currentNote: action.content,
-    currentNoteId: action.nodeId
+    currentNoteId: action.nodeId,
+    loadedNotes: newLoadedNotes
   });
 };
 
@@ -56,6 +61,16 @@ const changeToCurrentTopic = (state, action) => {
   })
 };
 
+const replaceCurrentNote = (state, action) => {
+  const loadedNote = state.loadedNotes[action.noteId];
+  return updateObject(state, {
+    error: null,
+    loadingCurrentNote: false,
+    currentNote: loadedNote,
+    currentNoteId: action.noteId,
+  });
+}
+
 
 
 const reducer = (state = initialState, action) => {
@@ -69,6 +84,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LOAD_CURRENT_NOTE_FAIL: return loadFail(state, action);
 
     case actionTypes.CHANGE_TO_CURRENT_TOPIC: return changeToCurrentTopic(state, action);
+    case actionTypes.REPLACE_CURRENT_NOTE: return replaceCurrentNote(state, action);
     default:
       return state;
   }

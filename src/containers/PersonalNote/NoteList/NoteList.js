@@ -24,7 +24,11 @@ const NoteList = props => {
 
   const loadNote = (noteId) => {
     setActiveNote(noteId);
-    props.loadCurrentNote(noteId)
+    if(props.loadedNotes[noteId]){
+      props.replaceCurrentNote(noteId);
+    }else{
+      props.loadCurrentNote(noteId)
+    }
   }
 
   let topicList = null;
@@ -65,12 +69,14 @@ const NoteList = props => {
 const mapStateToProps = state => {
   return {
     currentTopic: state.note.currentTopic ? state.note.currentTopic : null,
+    loadedNotes: state.note.loadedNotes
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadCurrentNote: (noteId) => dispatch(actions.loadCurrentNote(noteId))
+    loadCurrentNote: (noteId) => dispatch(actions.loadCurrentNote(noteId)),
+    replaceCurrentNote: (noteId) => dispatch(actions.replaceCurrentNote(noteId))
   };
 };
 

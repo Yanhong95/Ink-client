@@ -82,3 +82,10 @@ export const changeToCurrentTopic = (type) => {
     topic: type
   };
 }
+
+export const replaceCurrentNote = (noteId) => {
+  return {
+    type: actionTypes.REPLACE_CURRENT_NOTE,
+    noteId: noteId
+  }
+}

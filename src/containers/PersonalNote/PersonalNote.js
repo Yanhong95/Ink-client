@@ -19,6 +19,7 @@ const PersonalNote = props => {
       props.loadTopic(currentTopic);
       props.finishedPageUpdate(currentTopic);
     }else{
+      console.log('here');
       props.changeToCurrentTopic(currentTopic);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,8 +54,10 @@ const mapStateToProps = state => {
     loadingTopics: state.note.loadingTopics,
     loadingCurrentNote: state.note.loadingCurrentNote,
     error: state.note.error,
-    // algorithm: state.note.algorithm ? state.note.algorithm : null,
-    // javascript: state.note.javascript ? state.note.javascript : null,
+    algorithm: state.note.algorithm ? state.note.algorithm : null,
+    javascript: state.note.javascript ? state.note.javascript : null,
+    react: state.note.react ? state.note.react : null,
+    nodejs: state.note.nodejs ? state.note.nodejs : null,
     updatedtopics: state.update.updatedtopics 
   };
 };

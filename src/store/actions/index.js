@@ -13,6 +13,7 @@ export {
   loadTopic,
   loadCurrentNote,
   changeToCurrentTopic,
+  replaceCurrentNote,
 }from './note'
 
 
