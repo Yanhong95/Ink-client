@@ -10,6 +10,9 @@
   // align-items: stretch;
   overflow-y: scroll;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
  
   &_topic {
     height: 5vh;

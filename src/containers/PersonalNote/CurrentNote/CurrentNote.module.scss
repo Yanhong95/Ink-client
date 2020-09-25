@@ -3,8 +3,8 @@
 
 .note {
   height: 100%;
-  width: 70vw;
-  padding: 4rem 4rem 4rem 0rem;
+  width: 100%;
+  padding: 5rem;
   color: $color-primary-light;
   font-size: 1.5rem;
   overflow-x: hidden;
@@ -13,9 +13,14 @@
     color: $color-blue;
     text-decoration: none;
 
+
     &:hover {
       color: $color-blue-light;
     }
+  }
+
+  p {
+    padding: 1rem 0;
   }
 
   p img {
@@ -23,10 +28,13 @@
     margin: 0 auto;
   }
 
+  ul {
+    padding: 1rem 0;
+  }
+
   code {
-    
     font-family: "Monaco", "Menlo", "Consolas", "Arial", "Times New Roman";
-    max-width: 50%;
+    // max-width: 50%;
     word-wrap: break-word;
     word-break: break-all;
     overflow: hidden;

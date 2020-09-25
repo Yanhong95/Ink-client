@@ -13,9 +13,9 @@
   backface-visibility: hidden;
   will-change: overflow;
 
-  // @media only screen and (max-width: $bp-medium) {
-  //   grid-template-columns: repeat(4, 1fr);
-  // }
+  @media only screen and (max-width: $bp-medium) {
+    height: 92vh;
+  }
 
   &_left {
     flex: 0 0 20vw;
@@ -32,12 +32,59 @@
   }
 
   &_right {
-    flex: 0 0 80vw;
+    flex: 0 0 80%;
     background-color: $color-primary;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+
+    &_introduction{
+      height: 70%;
+      width: 70%;
+      background: $color-liner-blue;
+      border-radius: 1rem;
+      padding: 4rem;
+      box-shadow: $shadow-dark;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      &_title{
+        @include  heading-3;
+        color: $color-primary;
+        font-size: 5vmin;
+      }
+
+      &_summary{
+        color: $color-primary;
+        font-size: 2.1vmin;
+        margin-bottom: 2vmin;
+      }
+
+      ul {
+        list-style-type: none;
+        
+        li{
+          display: flex;
+          align-items: center;
+          margin-left: 2vmin;
+          height: 7vmin;
+          color: $color-primary;
+
+          svg{
+            margin-right: 6vmin;
+          }
+
+          p{
+            font-size: 2vmin;
+            @media only screen and (max-width: $bp-medium) {
+              font-size: 1.5vmin;
+            }
+          }
+        }
+       }
+    }
   }
 }
