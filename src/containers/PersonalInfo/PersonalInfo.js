@@ -5,7 +5,6 @@ import portrait from '../../assets/images/portrait.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import  { axiosInstance }  from '../../shared/utility'
 import { faLinkedin, faGithub, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
-// import leetcode from '../../assets/images/leetcode.svg';
 import { aboutMe, summary, skills, education, projectExperience, workExperience } from "../../assets/json/CYH_info.json";
 
 const PersonalInfo = props => {

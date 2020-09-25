@@ -120,11 +120,15 @@ const Upload = props => {
         setError(null);
         return;
       }
+      console.log(currTopic);
       if (topics.map(topic => topic.toLowerCase()).includes(currTopic.toLowerCase())) {
         currTopic = topics[topics.map(topic => topic.toLowerCase()).indexOf(currTopic.toLowerCase())];
-        setSubcategories(props.currentCatalog
-          .filter(currentCatalog => currentCatalog.name.toLowerCase() === currTopic.toLowerCase())[0]
-          .subcategories.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
+        const filter = props.currentCatalog.filter(currentCatalog => currentCatalog.name.toLowerCase() === currTopic.toLowerCase())[0]
+        if(filter){
+          setSubcategories( filter.subcategories.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
+        }else{
+          setSubcategories([]);
+        }
       } else {
         setTopics([...topics, currTopic]);
         setSubcategories([]);
@@ -133,7 +137,7 @@ const Upload = props => {
         setCurrentStructure({ ...currentStructure, topic: currTopic });
       }
       setError(null);
-    }, 1000)
+    }, 5000)
     setTimeout(timer);
   }
 

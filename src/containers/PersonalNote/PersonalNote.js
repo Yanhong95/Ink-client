@@ -14,6 +14,7 @@ const PersonalNote = props => {
   useEffect(() => {
     const pathname = props.location.pathname;
     const currentTopic = pathname.split('/')[1];
+    console.log(currentTopic);
     if (!props[currentTopic] || props.updatedtopics.includes(currentTopic)) {
       props.loadTopic(currentTopic);
       props.finishedPageUpdate(currentTopic);
@@ -52,8 +53,8 @@ const mapStateToProps = state => {
     loadingTopics: state.note.loadingTopics,
     loadingCurrentNote: state.note.loadingCurrentNote,
     error: state.note.error,
-    algorithm: state.note.algorithm ? state.note.algorithm : null,
-    javascript: state.note.javascript ? state.note.javascript : null,
+    // algorithm: state.note.algorithm ? state.note.algorithm : null,
+    // javascript: state.note.javascript ? state.note.javascript : null,
     updatedtopics: state.update.updatedtopics 
   };
 };

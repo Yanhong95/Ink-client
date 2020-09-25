@@ -1,5 +1,5 @@
 import React from 'react';
-import NoteTest from './NoteTest';
+import ReadNote from './ReadNote';
 import { connect } from 'react-redux';
 import classes from './CurrentNote.module.scss';
 // import * as actions from '../../../store/actions/index';
@@ -9,7 +9,7 @@ const CurrentNote = props => {
 
   return (
     <div className={classes.note}>
-        <NoteTest currentNoteContent={props.currentNote} />
+        <ReadNote currentNoteContent={props.currentNote} />
     </div>
   )
 }

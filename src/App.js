@@ -28,6 +28,8 @@ const App = props => {
       <Route path="/" exact render={(props) => <PersonalInfo {...props} />} />
       <Route path="/algorithm"  key="algorithm" render={(props) => <PersonalNote {...props} />} />
       <Route path="/javascript"  key="javascript" render={(props) => <PersonalNote {...props} />} />
+      <Route path="/nodejs"  key="nodejs" render={(props) => <PersonalNote {...props} />} />
+      <Route path="/react"  key="react" render={(props) => <PersonalNote {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/signup" render={(props) => <SignUp {...props} />} />
       <Route path="/verityEmail/:id" render={(props) => <VerifyEmail {...props} />} />
@@ -42,6 +44,8 @@ const App = props => {
         <Route path="/" exact render={(props) => <PersonalInfo {...props} />} />
         <Route path="/algorithm" key="algorithm" render={(props) => <PersonalNote {...props} />} />
         <Route path="/javascript" key="javascript" render={(props) => <PersonalNote {...props} />} />
+        <Route path="/nodejs"  key="nodejs" render={(props) => <PersonalNote {...props} />} />
+        <Route path="/react"  key="react" render={(props) => <PersonalNote {...props} />} />
         <Route path="/logout" component={Logout} />
         {props.isAdmin ? <Route path="/upload" render={(props) => <Upload {...props} />} /> : null}
         <Redirect to="/" />

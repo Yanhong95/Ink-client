@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import classes from './AuthNav.module.scss';
 import Aux from '../../../higherOrderComponent/Aux/Aux'
 import image from '../../../assets/images/ME.jpg'
-import Icon from '../../../shared/Icon/Icon'
+// import Icon from '../../../shared/Icon/Icon'
 import NavigationItem from '../../../components/Navigation/NavigationItems/NavigationItem'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignInAlt, faSignOutAlt, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 
 const AuthNav = props => {
 
@@ -12,10 +14,12 @@ const AuthNav = props => {
   let currDisplay = (
     <div className={classes.authNav}>
       <NavigationItem link="/signup">
-        <Icon name="people-outline"></Icon>
+        <FontAwesomeIcon icon={faUserFriends} size="1x" />
+        {/* <Icon name="people-outline"></Icon> */}
       </NavigationItem>
       <NavigationItem link="/login">
-        <Icon name="log-in-outline"></Icon>
+        <FontAwesomeIcon icon={faSignInAlt} size="1x" />
+        {/* <Icon name="log-in-outline"></Icon> */}
       </NavigationItem>
     </div>
   );
@@ -23,9 +27,12 @@ const AuthNav = props => {
   if (props.isAuthenticated) {
     currDisplay = (
       <div className={classes.authNav}>
-        <img src={image} alt="userImage" />
+        <NavigationItem link="/">
+          <img src={image} alt="userImage" />
+        </NavigationItem>
         <NavigationItem link="/logout">
-          <Icon name="log-out-outline"></Icon>
+          <FontAwesomeIcon icon={faSignOutAlt} size="1x" />
+          {/* <Icon name="log-out-outline"></Icon> */}
         </NavigationItem>
       </div>
     );
