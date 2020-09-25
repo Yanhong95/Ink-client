@@ -14,7 +14,7 @@
     "FacebookURL":"https://www.facebook.com/yanhongchen95",
     "LeetcodeURL":"https://leetcode.com/yanhongchen/"
   },
-  "summary": "Graduate student majoring in information systems at Northeastern University with 2 years ofexperience using React and NodeJS to reach project goals and ship high quality software. I’m highly driven and have strong experience creating scalable, high-quality web applications, also have strong algorithm and problem-solving skills.",
+  "summary": "Graduate student majoring in information systems at Northeastern University with 2 years of experience using React and NodeJS to reach project goals and ship high quality software. I’m highly driven and have strong experience creating scalable, high-quality web applications, with expertise in algorithms and problem solving.",
   "skills": {
     "ProgrammingLanguages": "JavaScript, Java, HTML, CSS, Sass, Python, GraphQL, SQL",
     "frameworks" : "React, Express, Spring, Bootstrap",
@@ -42,12 +42,11 @@
       "position":"Full Stack Developer (Intern)",
       "period":"June 2019 – Dec 2019",
       "location":"Boston, MA",
-      "duty":"As a pioneering academic institution designed to cultivate youth leaders. Knovva Academy organizes Model G20 Youth Leadership Summit worldwide to improve leadership and international vision of young students. I was responsible for adding exciting new features to summit application platform using React and Redux. Also, developed API by Node/Express and GraphQL layer in between.",
+      "duty":"As a pioneering academic institution designed to cultivate youth leaders. Knovva Academy organizes Model G20 Youth Leadership Summit worldwide to improve leadership and international vision of students. I was responsible for using React and Redux to add new features to the front-end platform, developing Node/Express-based APIs, and integrating RESTful and GraphQL as the middle layer.",
       "hightLight":[
-        "Developed WeChat login feature for user platform independently, including setting up development and test environments, designing and implementing user login logic.",
+        "Developed OAuth 2.0 login feature for customer platform independently, including setting up development environments, designing QR code page, implementing authorization flows, email verification and binding.",
         "Achieved 1.9x performance boost for application overview component by optimizing Mongoose model structure. Fetched thousands of application information across 7 collections on MongoDB.",
-        "Rebuilt interview evaluation page, leveraged React Google Charts API to create user distribution chart, countdown page for student interview deadline, used TestCafe to write automatic tests, worked on website guided tours to improve user experience, created Easter eggs for birthday users, etc.",
-        "Cooperated with UI/UX designer to iterate new version of web interface with flat design."
+        "Cooperated with UI/UX designer to iterate new version of web interface, rebuilt interview evaluation page, leveraged React Google Charts API to create user distribution chart, built a countdown page for student interview deadline, used TestCafe to write automatic tests, developed website guided tours to improve user experience. In addition to my core responsibilities, created Easter eggs to please birthday users."
       ]
     },
     {
