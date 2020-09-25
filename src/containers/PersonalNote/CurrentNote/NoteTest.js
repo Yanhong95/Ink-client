@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppMarkdown from '../../../assets/md/169. Majority Element.md';
 import ReactMarkdown from 'react-markdown';
 
-class NoteTest extends Component {
+const NoteTest = props => {
 
-  constructor() {
-    super();
-    this.state = { markdown: '' };
-  }
+  const [markdown, SetMarkdown] = useState('');
 
-  componentDidMount() {
-    // Get the contents from the Markdown file and put them in the React state, so we can reference it in render() below.
-    fetch(AppMarkdown).then(res => res.text()).then(text => {
-      // console.log(text);
-      this.setState({ markdown: text })
-    });
-  }
+  useEffect(() => {
+    SetMarkdown(props.currentNoteContent);
+    // fetch(props.currentNoteContent).then(res => res.text()).then(text => {
+    //   // console.log(text);
+    
+    // });
+  }, [props.currentNoteContent])
 
-  render() {
-    const { markdown } = this.state;
-    return <ReactMarkdown source={markdown} />;
-  }
+  return (
+     <ReactMarkdown source={markdown} />
+  )
 }
 
 export default NoteTest;

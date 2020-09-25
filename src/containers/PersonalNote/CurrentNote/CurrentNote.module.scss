@@ -2,9 +2,12 @@
 @import '../../../shared/scss/typography.scss';
 
 .note {
-  padding: 4rem;
+  height: 100%;
+  width: 70vw;
+  padding: 4rem 0rem 4rem 0rem;
   color: $color-primary-light;
   font-size: 1.5rem;
+  overflow-x: hidden;
 
   a {
     color: $color-blue;
@@ -15,20 +18,33 @@
     }
   }
 
-  code{
-    font-family:  "Monaco", "Menlo", "Consolas", "Arial", "Times New Roman";
+  p img {
+    display: block;
+    margin: 0 auto;
   }
 
-  pre{
+  code {
+    
+    font-family: "Monaco", "Menlo", "Consolas", "Arial", "Times New Roman";
+    max-width: 50%;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    font-size: small;
+  }
+
+  pre {
     padding: 3rem 3rem 3rem 3rem;
+    background-color: $color-primary-dark;
+    width: 90%;
   }
 
-  h4{
+  h4 {
     @include heading-4-white;
     padding: 2rem 0 2rem 0;
   }
 
-  strong{
+  strong {
     padding: 1rem 1rem 1rem 1rem;
   }
 }

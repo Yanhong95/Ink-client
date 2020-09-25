@@ -5,12 +5,12 @@
 .topicList {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  // display: flex;
+  // flex-direction: column; 
+  // align-items: stretch;
   overflow-y: scroll;
   overflow-x: hidden;
-
+ 
   &_topic {
     height: 5vh;
     line-height: 5vh;
@@ -72,8 +72,13 @@
           color: $color-blue;
           cursor: pointer;
         }
+
+        &_active{
+          color: $color-blue;
+        }
       }
     }
-
   }
 }
+
+

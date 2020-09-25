@@ -6,6 +6,7 @@ const initialState = {
   error: false,
   message: null,
   loading: false,
+  updatedtopics: []
 }
 
 const loadCatalogSuccess = (state, action) => {
@@ -34,17 +35,36 @@ const uploadFileStart = (state, action) => {
 }
 
 const uploadFileSuccess = (state, action) => {
-  console.log(action.message);
+  let newUpdatedtopics = [];
+  if(!state.updatedtopics.includes(action.topic)){
+    newUpdatedtopics = [...state.updatedtopics, action.topic];
+  }else{
+    newUpdatedtopics = [...state.updatedtopics]
+  }
+  // console.log(newUpdatedtopics);
   return updateObject(state, {
     loading: false,
     message: action.message,
     error: null,
+    uploadNewNote: true,
+    updatedtopics: newUpdatedtopics
   });
 }
 const uploadFileFail = (state, action) => {
   return updateObject(state, {
     loading: false,
     error: action.error
+  });
+}
+
+const finishedPageUpdate = (state, action) => {
+  const newUpdatedtopics = [...state.updatedtopics];
+  newUpdatedtopics.splice(state.updatedtopics.indexOf(action.topic), 1)
+  // console.log(newUpdatedtopics);
+  return updateObject(state, {
+    loading: false,
+    error: action.error,
+    updatedtopics: newUpdatedtopics
   });
 }
 
@@ -55,6 +75,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.UPLOAD_FILE_START: return uploadFileStart(state,action);
     case actionTypes.UPLOAD_FILE_SUCCESS: return uploadFileSuccess(state, action);
     case actionTypes.UPLOAD_FILE_FAIL: return uploadFileFail(state, action);
+    case actionTypes.FINISHED_PAGE_UPDATE : return finishedPageUpdate(state, action);
     default:
       return state;
   }

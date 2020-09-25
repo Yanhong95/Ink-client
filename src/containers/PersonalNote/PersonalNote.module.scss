@@ -18,23 +18,21 @@
   // }
 
   &_left {
-    flex: 0 0 20%;
+    flex: 0 0 20vw;
     background-color: $color-primary-dark;
-    // height: 100vh;
-    height: auto;
-    grid-column: 1/2;
+    height: 100%;
+    // grid-column: 1/2;
     display: flex;
     justify-content: center;
     align-items: center;
-    -ms-overflow-style: none;
-    scrollbar-width: none;  
+    overflow-y: auto;
     &::-webkit-scrollbar {
       display: none;
     }
   }
 
   &_right {
-    flex: 1;
+    flex: 0 0 80vw;
     background-color: $color-primary;
     height: 100%;
     display: flex;

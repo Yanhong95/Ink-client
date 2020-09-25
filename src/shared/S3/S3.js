@@ -8,7 +8,8 @@ export const S3Object = {
 }
 
 export const getSignedURL = async ( uploadFolder, fileName, fileType, token) => {
-  const validateURL = `uploadS3Bucket=${S3Object.uploadS3Bucket}&uploadPath=${uploadFolder}&filename=${fileName}&type=${fileType}`;
+  const newfileName = fileName.replace(/\s+/g, '_').toLowerCase();
+  const validateURL = `uploadS3Bucket=${S3Object.uploadS3Bucket}&uploadPath=${uploadFolder}&filename=${newfileName}&type=${fileType}`;
   try {
     const res = await axiosInstance.get(`/s3/getS3SignedUrl?${validateURL}`, {
       headers: {
@@ -24,10 +25,9 @@ export const getSignedURL = async ( uploadFolder, fileName, fileType, token) => 
 
 export const uploadFileToS3 = async(uploadFolder, file, resObject) => {
   try {
-    console.log(uploadFolder);
-    console.log(file);
     const signedUrl =  resObject.signedUrl;
-    const fileName = resObject.fileName;
+    const fileName = resObject.fileName.replace(/\s+/g, '_').toLowerCase();
+    console.log(fileName);
     await axiosInstance.put(signedUrl,  file, {
       headers: {
         'Content-Type': file.type 

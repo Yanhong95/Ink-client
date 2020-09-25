@@ -5,9 +5,11 @@ const initialState = {
   subcategories: {},
   currentTopic: null,
   currentNote: null,
+  currentNoteId: null,
   loadingTopics: false,
   loadingSubcategory: false,
   loadingCurrentNote: false,
+  uploadNewNote: false,
   error: null
 };
 
@@ -16,7 +18,7 @@ const loadTopicStart = (state, action) => {
 };
 
 const loadTopicSuccess = (state, action) => {
-  console.log(action.topicTpye);
+  // console.log(action.topicTpye);
   return updateObject(state, {
     currentTopic: action.topics,
     error: null,
@@ -33,6 +35,8 @@ const loadCurrentNoteSuccess = (state, action) => {
   return updateObject(state, {
     error: null,
     loadingCurrentNote: false,
+    currentNote: action.content,
+    currentNoteId: action.nodeId
   });
 };
 
@@ -50,7 +54,8 @@ const changeToCurrentTopic = (state, action) => {
   return updateObject(state, {
     currentTopic : newCurrentTopic
   })
-}
+};
+
 
 
 const reducer = (state = initialState, action) => {

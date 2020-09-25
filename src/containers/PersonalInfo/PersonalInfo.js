@@ -1,14 +1,49 @@
-import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useState, useRef, useEffect } from 'react';
 import classes from './PersonalInfo.module.scss';
 import Aux from '../../higherOrderComponent/Aux/Aux';
 import portrait from '../../assets/images/portrait.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import  { axiosInstance }  from '../../shared/utility'
 import { faLinkedin, faGithub, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 // import leetcode from '../../assets/images/leetcode.svg';
 import { aboutMe, summary, skills, education, projectExperience, workExperience } from "../../assets/json/CYH_info.json";
 
 const PersonalInfo = props => {
+
+  const [isSending, setIsSending] = useState(false)
+  const isMounted = useRef(true)
+
+  // set isMounted to false when we unmount the component
+  useEffect(() => {
+    return () => {
+      isMounted.current = false
+    }
+  }, [])
+
+  const loadResume = useCallback(async () => {
+    // don't send again while we are sending
+    if (isSending) return
+    // update state
+    setIsSending(true)
+    // send the actual request
+    try {
+      const response = await axiosInstance.get('/s3/getS3Resume',{"responseType": "blob" });
+      console.log(response);
+      // const resBody = await response.blob();
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Resume_of_Yanhong_Chen.pdf'); 
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.log(error.message);
+    }
+    // once the request is sent, update state again
+    if (isMounted.current) // only update if we are still mounted
+      setIsSending(false)
+  }, [isSending]) // update the callback if the state changes
+ 
   return (
     <Aux>
       <div className={classes.info}>
@@ -84,7 +119,7 @@ const PersonalInfo = props => {
                 <div className={classes.info_aboutMe_figure_info_details_title}>Interests:</div>
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.interests}</div>
                 <div className={classes.info_aboutMe_figure_info_details_resume}>
-                  <button className={classes.info_aboutMe_figure_info_details_resume_bouncy} href="desumeDownload">Resume Download</button>
+                  <button className={classes.info_aboutMe_figure_info_details_resume_bouncy} onClick={loadResume} href="desumeDownload">Resume Download</button>
                 </div>
               </div>
             </div>

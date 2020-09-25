@@ -35,10 +35,11 @@ export const uploadFileStart = () => {
   };
 };
 
-export const uploadFileSuccess = (message) => {
+export const uploadFileSuccess = (message, topic) => {
   return {
     type: actionTypes.UPLOAD_FILE_SUCCESS,
-    message: message
+    message: message,
+    topic: topic
   };
 };
 
@@ -73,12 +74,16 @@ export const uploadFile = (uploadFile, token) => {
         }
       });
       // console.log(res.data);
-      dispatch(uploadFileSuccess(res.data.message));
+      dispatch(uploadFileSuccess(res.data.message, uploadFile.topic));
     } catch (err) {
       dispatch(uploadFileFail(err.response ? err.response.data.message : err.message));
     }
   }
 }
 
-
-
+export const finishedPageUpdate = (topic) => {
+  return {
+    type: actionTypes.FINISHED_PAGE_UPDATE,
+    topic: topic
+  };
+}

@@ -32,7 +32,7 @@ export const loadTopic = (type) => {
         dispatch(loadTopicSuccess( type, response.data.subcategories));
       })
       .catch(err => {
-        dispatch(loadTopicFail(err.response.data.message));
+        dispatch(loadTopicFail(err.message));
       });
   };
 }
@@ -43,11 +43,11 @@ export const loadCurrentNoteStart = () => {
   };
 };
 
-export const loadCurrentNoteSuccess = (topic, subcategories) => {
+export const loadCurrentNoteSuccess = (content, nodeId) => {
   return {
     type: actionTypes.LOAD_CURRENT_NOTE_SUCCESS,
-    subcategorieTpye: topic,
-    subcategories: subcategories
+    content: content, 
+    nodeId: nodeId
   };
 }
 
@@ -59,18 +59,19 @@ export const loadCurrentNoteFail = (error) => {
 };
 
 // NoteUrl 
-export const loadCurrentNote = (noteUrl) => {
+export const loadCurrentNote = (noteId) => {
   return dispatch => {
     dispatch(loadCurrentNoteStart());
-    // const url = '/note/loadNote';
-    // axiosInstance.post(url, {category})
-    //   .then(response => {
-    //     dispatch(loadCurrentNoteSuccess(response.data.notes));
-    //   })
-    //   .catch(err => {
-    //     dispatch(loadCurrentNoteFail(err.response.data.message));
-    //   });
-    dispatch(loadCurrentNoteSuccess(noteUrl,));
+    const url = '/s3/getS3Note';
+    axiosInstance.post(url, {noteId})
+      .then(response => {
+        // console.log(response.data);
+        dispatch(loadCurrentNoteSuccess(response.data, noteId));
+      })
+      .catch(err => {
+        console.log(err.message);
+        dispatch(loadCurrentNoteFail(err.message));
+      });
   };
 } 
 

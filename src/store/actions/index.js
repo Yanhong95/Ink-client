@@ -18,5 +18,6 @@ export {
 
 export {
   loadCatalog,
-  uploadFile
+  uploadFile,
+  finishedPageUpdate
 }from './update'
