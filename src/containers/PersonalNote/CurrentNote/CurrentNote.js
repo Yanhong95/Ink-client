@@ -9,6 +9,7 @@ const CurrentNote = props => {
 
   return (
     <div className={classes.note}>
+        <div className={classes.note_title}>{props.currentNoteName}</div>
         <ReadNote currentNoteContent={props.currentNote} />
     </div>
   )
@@ -18,6 +19,7 @@ const mapStateToProps = state => {
   return {
     currentNote: state.note.currentNote ? state.note.currentNote : null,
     currentNoteId: state.note.currentNoteId ? state.note.currentNoteId : null,
+    currentNoteName: state.note.currentNoteName ? state.note.currentNoteName : null,
   };
 };
 

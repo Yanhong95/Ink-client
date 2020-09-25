@@ -18,7 +18,6 @@ const PersonalNote = props => {
   useEffect(() => {
     const pathname = props.location.pathname;
     const currentTopic = pathname.split('/')[1];
-    console.log(currentTopic);
     if (!props[currentTopic] || props.updatedtopics.includes(currentTopic)) {
       props.loadTopic(currentTopic);
       props.finishedPageUpdate(currentTopic);
@@ -41,16 +40,16 @@ const PersonalNote = props => {
   let rightNav;
   if (props.loadingCurrentNote) {
     rightNav = <SpinnerCircle />
-  } else if (!props.currentNoteId) {
+  } else if (!props.currentNoteId || props.error) {
     rightNav = (
       <div className={classes.note_right_introduction}>
         <div className={classes.note_right_introduction_title}> Introduction:</div>
         <div className={classes.note_right_introduction_summary}>The purpose of developing the website is to enjoy the fun of dynamic design, to polish and improve my React and Nodejs Skills as well.
         In addition, for me to have a place to post my daily notes about the algorithm problems I solved, some technical notes, and experience.</div>
         <ul>
-          <li><FontAwesomeIcon icon={faRocket} color="white" size="2x" /><p>Algorithm related, including questions, data structure and basic functions. </p></li>
+          <li><FontAwesomeIcon icon={faRocket} color="white" size="2x" /><p>Algorithm related, including questions, data structure, and basic functions. </p></li>
           <li><FontAwesomeIcon icon={faJsSquare} color="white" size="2x" /><p>JavaScript related, including basic DOM manipulation, Event loop, Closures, build-in functions, etc.</p></li>
-          <li><FontAwesomeIcon icon={faNodeJs} color="white" size="2x" /><p>Nodejs related, including Express, REST api, GraphQl, database, validation, etc.</p></li>
+          <li><FontAwesomeIcon icon={faNodeJs} color="white" size="2x" /><p>Nodejs related, including Express, REST API, GraphQl, database, validation, etc.</p></li>
           <li><FontAwesomeIcon icon={faReact} color="white" size="2x" /><p>React related, including classical React, React Hook, Redux, Routing, etc.</p></li>
         </ul>
       </div>

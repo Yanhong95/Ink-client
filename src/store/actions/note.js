@@ -43,11 +43,12 @@ export const loadCurrentNoteStart = () => {
   };
 };
 
-export const loadCurrentNoteSuccess = (content, nodeId) => {
+export const loadCurrentNoteSuccess = (content, nodeId, noteName) => {
   return {
     type: actionTypes.LOAD_CURRENT_NOTE_SUCCESS,
     content: content, 
-    nodeId: nodeId
+    nodeId: nodeId,
+    noteName: noteName
   };
 }
 
@@ -59,14 +60,13 @@ export const loadCurrentNoteFail = (error) => {
 };
 
 // NoteUrl 
-export const loadCurrentNote = (noteId) => {
+export const loadCurrentNote = (noteId, noteName) => {
   return dispatch => {
     dispatch(loadCurrentNoteStart());
     const url = '/s3/getS3Note';
     axiosInstance.post(url, {noteId})
       .then(response => {
-        // console.log(response.data);
-        dispatch(loadCurrentNoteSuccess(response.data, noteId));
+        dispatch(loadCurrentNoteSuccess(response.data, noteId, noteName));
       })
       .catch(err => {
         console.log(err.message);
@@ -83,9 +83,10 @@ export const changeToCurrentTopic = (type) => {
   };
 }
 
-export const replaceCurrentNote = (noteId) => {
+export const replaceCurrentNote = (noteId, noteName) => {
   return {
     type: actionTypes.REPLACE_CURRENT_NOTE,
-    noteId: noteId
+    noteId: noteId,
+    noteName: noteName
   }
 }

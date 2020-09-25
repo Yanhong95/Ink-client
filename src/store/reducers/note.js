@@ -6,12 +6,12 @@ const initialState = {
   currentTopic: null,
   currentNote: null,
   currentNoteId: null,
+  currentNoteName: null,
   loadingTopics: false,
   loadingSubcategory: false,
   loadingCurrentNote: false,
   uploadNewNote: false,
   error: null,
-
   loadedNotes: {}
 };
 
@@ -25,7 +25,10 @@ const loadTopicSuccess = (state, action) => {
     currentTopic: action.topics,
     error: null,
     loadingTopics: false,
-    [action.topicTpye]: action.topics
+    [action.topicTpye]: action.topics,
+    currentNote: null,
+    currentNoteId: null,
+    currentNoteName: null,
   });
 };
 
@@ -35,12 +38,12 @@ const loadCurrentNoteStart = (state, action) => {
 
 const loadCurrentNoteSuccess = (state, action) => {
   const newLoadedNotes = updateObject(state.loadedNotes, { [action.nodeId]: action.content});
-  // console.log(newLoadedNotes);
   return updateObject(state, {
     error: null,
     loadingCurrentNote: false,
     currentNote: action.content,
     currentNoteId: action.nodeId,
+    currentNoteName: action.noteName,
     loadedNotes: newLoadedNotes
   });
 };
@@ -57,7 +60,10 @@ const loadFail = (state, action) => {
 const changeToCurrentTopic = (state, action) => {
   const newCurrentTopic = [...state[action.topic]];
   return updateObject(state, {
-    currentTopic : newCurrentTopic
+    currentTopic : newCurrentTopic,
+    currentNote: null,
+    currentNoteId: null,
+    currentNoteName: null,
   })
 };
 
@@ -68,6 +74,7 @@ const replaceCurrentNote = (state, action) => {
     loadingCurrentNote: false,
     currentNote: loadedNote,
     currentNoteId: action.noteId,
+    currentNoteName: action.noteName
   });
 }
 
