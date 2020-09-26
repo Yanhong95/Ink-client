@@ -8,9 +8,7 @@ const NoteTest = props => {
 
   useEffect(() => {
     SetMarkdown(props.currentNoteContent);
-    // fetch(props.currentNoteContent).then(res => res.text()).then(text => {
-    //   // console.log(text);
-    // });
+    // fetch(props.currentNoteContent).then(res => res.text()).then(text =>  setMarkdown(text))};
   }, [props.currentNoteContent])
 
   return (
