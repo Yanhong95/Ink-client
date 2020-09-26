@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import AppMarkdown from '../../../assets/md/169. Majority Element.md';
 import ReactMarkdown from 'react-markdown';
+import CodeBlock from "./CodeBlock";
 
 const NoteTest = props => {
 
@@ -10,12 +10,11 @@ const NoteTest = props => {
     SetMarkdown(props.currentNoteContent);
     // fetch(props.currentNoteContent).then(res => res.text()).then(text => {
     //   // console.log(text);
-    
     // });
   }, [props.currentNoteContent])
 
   return (
-     <ReactMarkdown source={markdown} />
+     <ReactMarkdown source={markdown}  renderers={{ code: CodeBlock, language: 'java' }} />
   )
 }
 

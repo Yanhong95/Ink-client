@@ -7,38 +7,8 @@ button {
         color: #ccc;
         cursor: not-allowed;
     }
+
+    // &:active {
+    //     transform: translateY(2px);
+    // }
 }
-
-
-// .Button {
-//     background-color: transparent;
-//     border: none;
-//     color: white;
-//     outline: none;
-//     cursor: pointer;
-//     font: inherit;
-//     padding: 10px;
-//     margin: 10px;
-//     font-weight: bold;
-// }
-
-// .Button:first-of-type {
-//     margin-left: 0;
-//     padding-left: 0;
-// }
-
-// .Success {
-//     color: #5C9210;
-// }
-
-// .Danger {
-//     color: #944317;
-// }
-
-// .Signin {
-//     color: #40bad5;
-// }
-
-// .Signup {
-//     color: #fcbf1e;
-// }
