@@ -1,0 +1,50 @@
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/mixin.scss';
+@import '../../../shared/scss/typography.scss';
+
+.introduction{
+  height: 70%;
+  width: 70%;
+  background: $color-liner-blue;
+  border-radius: 1rem;
+  padding: 4rem;
+  box-shadow: $shadow-dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  &_title{
+    @include  heading-3;
+    color: $color-primary;
+    font-size: 5vmin;
+  }
+
+  &_summary{
+    color: $color-primary;
+    font-size: 2.1vmin;
+    margin-bottom: 2vmin;
+  }
+
+  ul {
+    list-style-type: none;
+    
+    li{
+      display: flex;
+      align-items: center;
+      margin-left: 2vmin;
+      height: 7vmin;
+      color: $color-primary;
+
+      svg{
+        margin-right: 6vmin;
+      }
+
+      p{
+        font-size: 2vmin;
+        @media only screen and (max-width: $bp-medium) {
+          font-size: 1.5vmin;
+        }
+      }
+    }
+   }
+}

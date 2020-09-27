@@ -9,7 +9,7 @@ const Modal = props => {
 
     return (
         <Aux>
-            <Backdrop show={props.show} clicked={props.modalClosed} />
+            <Backdrop show={props.show} position={props.position} clicked={props.modalClosed} />
             <div
                 className={classes.Modal}
                 style={{

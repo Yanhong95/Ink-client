@@ -5,6 +5,8 @@ import Layout from './higherOrderComponent/Layout/Layout';
 import useScript from './shared/hook/useScript';
 import * as actions from './store/actions/index';
 import Logout from './containers/Auth/AuthLogout';
+import SpinnerCircle from './components/UI/Spinner/SpinnerCircle'
+import classes from './App.module.scss'
 const Login = React.lazy(() => import('./containers/Auth/Login/Login'));
 const SignUp = React.lazy(() => import('./containers/Auth/SignUp/SignUp'));
 const Upload = React.lazy(() => import('./containers/Upload/Upload'));
@@ -54,7 +56,7 @@ const App = props => {
   }
   return (
     <Layout>
-      <Suspense fallback={<p>Loading</p>}>
+      <Suspense fallback={<div className={classes.main}><SpinnerCircle/></div>}>
         {routes}
       </Suspense>
     </Layout>

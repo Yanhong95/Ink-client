@@ -6,12 +6,12 @@
   width: 100%;
   padding: 2rem 5rem 5rem 5rem;
   color: $color-primary-light;
-  font-size: 1.5rem;
+  font-size: 1.7vmin;
   overflow-x: hidden;
 
   &_title{
     @include heading-4-white;
-    font-size: 3.5rem;
+    font-size: 4vmin;
     color: $color-primary-light;
   }
 
@@ -32,6 +32,7 @@
   p img {
     display: block;
     margin: 0 auto;
+    max-width: 40vw;
   }
 
   ul {
@@ -54,7 +55,7 @@
     border: none !important;
     border-radius: 0.2rem !important;
     color: $color-blue-dark !important;
-
+    font-size: 1.7vmin !important;
   }
 
   h4 {
@@ -74,7 +75,7 @@
 .scroll{
   transition: opacity 1s;
   opacity: 0.3;
-  background-color: $color-blue-dark;
+  background: $color-liner-blue;
   width: 40px;
   height: 40px;
   position: fixed;

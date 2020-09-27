@@ -9,10 +9,11 @@ const NoteTest = props => {
   useEffect(() => {
     SetMarkdown(props.currentNoteContent);
     // fetch(props.currentNoteContent).then(res => res.text()).then(text =>  setMarkdown(text))};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.currentNoteContent])
 
   return (
-     <ReactMarkdown source={markdown}  renderers={{ code: CodeBlock, language: 'java' }} />
+     <ReactMarkdown source={markdown}  renderers={{ code: CodeBlock }} />
   )
 }
 

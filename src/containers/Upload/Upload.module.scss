@@ -332,3 +332,21 @@
     }
   }
 }
+
+
+.Modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 1px black;
+  background: $color-liner-yellow;
+  padding: 16px;
+  top: 40%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+  text-align: center;
+  @include heading-2-light;
+  font-size: 4vmin;;
+  color: $color-blue-dark
+}

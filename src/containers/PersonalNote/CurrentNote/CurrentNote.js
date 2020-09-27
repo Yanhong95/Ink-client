@@ -25,7 +25,7 @@ const CurrentNote = props => {
   return (
     <div className={classes.note} id="currNote" onScroll={onScroll}>
       <div ref={myRef} className={classes.note_title}>{props.currentNoteName}</div>
-      <ReadNote currentNoteContent={props.currentNote} />
+      <ReadNote currentNoteContent={props.currentNote}/>
       <button className={ showScrollBtn ?  classes.scroll : [classes.scroll, classes.hidden]} onClick={() => scrollToRef(myRef)}>
         <FontAwesomeIcon icon={faAngleDoubleUp} color="white" size="2x" />
       </button>

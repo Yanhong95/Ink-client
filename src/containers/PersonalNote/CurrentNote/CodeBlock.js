@@ -15,10 +15,10 @@ class CodeBlock extends PureComponent {
   };
 
   render() {
-    const { language, value } = this.props;
+    const language = this.props.language !== "react" ? this.props.language: "javascript";
     return (
       <SyntaxHighlighter language={language} style={xonokai}>
-        {value}
+        {this.props.value}
       </SyntaxHighlighter>
     );
   }

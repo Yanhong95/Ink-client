@@ -13,6 +13,7 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  z-index: 20;
  
   &_topic {
     height: 5vh;
@@ -27,7 +28,7 @@
     overflow: hidden;
 
     &_name {
-      width: 14vw;
+      width: 30vmin;
       overflow-x: scroll;
       overflow-y: hidden;
       scrollbar-width: none;

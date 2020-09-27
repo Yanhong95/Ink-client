@@ -248,7 +248,7 @@ const Upload = props => {
 
   let successPopup = (
     <Aux>
-      <Modal show={props.message } modalClosed={uploadFinished}>
+      <Modal show={props.message} position={{top: 0, left: 0}} modalClosed={uploadFinished}>
         <div >{props.message}</div>
       </Modal>
       {mainPage}

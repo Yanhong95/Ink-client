@@ -1,18 +1,13 @@
-// import Aux from '../Aux/Aux';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './Layout.module.scss';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-// import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 const Layout = props => {
 
     const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
 
-    // const sideDrawerClosedHandler = () => {
-    //     setSideDrawerIsVisible(false);
-    // }
 
     const sideDrawerToggleHandler = () => {
         setSideDrawerIsVisible(!sideDrawerIsVisible);
@@ -25,10 +20,6 @@ const Layout = props => {
                     <Toolbar
                         isAdmin={props.isAdmin}
                         drawerToggleClicked={sideDrawerToggleHandler} />
-                    {/* <SideDrawer
-                    isAuth={props.isAuthenticated}
-                    open={sideDrawerIsVisible}
-                    closed={sideDrawerClosedHandler} /> */}
                 </div>
             </div>
             <div className={classes.main}>
