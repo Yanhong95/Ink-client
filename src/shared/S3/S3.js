@@ -1,7 +1,7 @@
 import { axiosInstance } from '../utility';
 
 export const S3Object = {
-  uploadS3Bucket: 'mypersonalblogstore',
+  uploadS3Bucket: 'myink',
   noteFolder: 'notes',
   userFolder: 'users',
   storageURL: 'https://s3.us-east-2.amazonaws.com/'
@@ -33,7 +33,7 @@ export const uploadFileToS3 = async(uploadFolder, file, resObject) => {
         'Content-Type': file.type 
       }
     });
-    // https://s3.us-east-2.amazonaws.com/mypersonalblogstore/notes/algorithm/array/5eefd6d8068aae68d6e35c78-note.md
+    // https://s3.us-east-2.amazonaws.com/myink/notes/algorithm/array/5eefd6d8068aae68d6e35c78-note.md
     const fileURL = `https://s3.us-east-2.amazonaws.com/${S3Object.uploadS3Bucket}/${uploadFolder}/${fileName}`;
     return fileURL;
   } catch (error) {
