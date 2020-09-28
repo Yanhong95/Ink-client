@@ -26,7 +26,7 @@ chrome-user-data
 
 .env
 .env.development
-.env.development
+.env.production
 
 
 packages/react-devtools-core/dist
