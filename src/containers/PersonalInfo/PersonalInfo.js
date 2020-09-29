@@ -1,7 +1,7 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import classes from './PersonalInfo.module.scss';
 import Aux from '../../higherOrderComponent/Aux/Aux';
-import portrait from '../../assets/images/portrait.jpeg'
+import portrait from '../../assets/images/portrait.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import  { axiosInstance }  from '../../shared/utility'
 import { faLinkedin, faGithub, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
