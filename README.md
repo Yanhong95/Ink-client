@@ -24,6 +24,8 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 - 👌&ensp;Add a fixed button for scroll to top.
 - 👌&ensp;Hide left side category bar when the screen is too small.
 - 👌&ensp;Change markdown code type base on topic.
+- login and signup styling in small screen
+- code font size in small screen
 
 ### Phase two:
 
@@ -37,7 +39,8 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 ### Phase three:
 
 - WebSockets for automatic push of new notes
-- reset password
+- Reset password
+
 
 <hr>
 

@@ -2,11 +2,10 @@
   "aboutMe": {
     "name": "Yanhong Chen",
     "photoUrl": "",
-    "address": "71 Sylvester Ave, Winchester, MA",
-    "zipCode": "01890",
-    "email": "Yanhongmain@gmail.com",
-    "phone": "857-869-6243",
-    "interests": "Photograph, Cooking, Music",
+    "city": "Winchester, MA, 01890",
+    "email": "Yanhongmain AT gmail.com",
+    "phone": "1-857-869-6243",
+    "interests": "Photography, Cooking, Music",
     "resumeAdrress": "",
     "LinkedInURL":"https://www.linkedin.com/in/yanhong-chen/",
     "GithubURL":"https://github.com/Yanhong95",
@@ -16,10 +15,10 @@
   },
   "summary": "Graduate student majoring in information systems at Northeastern University with 2 years of experience using React and NodeJS to reach project goals and ship high quality software. I’m highly driven and have strong experience creating scalable, high-quality web applications, with expertise in algorithms and problem solving.",
   "skills": {
-    "ProgrammingLanguages": "JavaScript, Java, HTML, CSS, Sass, Python, GraphQL, SQL",
-    "frameworks" : "React, Express, Spring, Bootstrap",
-    "database" : "MongoDB, MySQL, SQL Server, Redis, Elasticsearch",
-    "ORM" : "Mongoose, Sequelize, Hibernate"
+    "Programming Languages": "JavaScript, Java, HTML, CSS, Sass, Python, GraphQL, SQL",
+    "Frameworks" : "React, Express, Spring, Bootstrap",
+    "Databases" : "MongoDB, MySQL, SQL Server, Redis, Elasticsearch",
+    "ORMs" : "Mongoose, Sequelize, Hibernate"
   },
   "education": [
     {

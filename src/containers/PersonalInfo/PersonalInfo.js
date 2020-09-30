@@ -107,12 +107,10 @@ const PersonalInfo = props => {
             <div className={classes.info_aboutMe_figure_info}>
               <div className={classes.info_aboutMe_figure_info_name}><h2>{aboutMe.name}</h2></div>
               <div className={classes.info_aboutMe_figure_info_details}>
-                <div className={classes.info_aboutMe_figure_info_details_title}>Address:</div>
-                <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.address}</div>
-                <div className={classes.info_aboutMe_figure_info_details_title}>Zip Code:</div>
-                <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.zipCode}</div>
+                <div className={classes.info_aboutMe_figure_info_details_title}>City:</div>
+                <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.city}</div>
                 <div className={classes.info_aboutMe_figure_info_details_title}>Email:</div>
-                <div className={classes.info_aboutMe_figure_info_details_content}><a href={`mailto: ${aboutMe.email}`} >{aboutMe.email}</a></div>
+                <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.email}</div>
                 <div className={classes.info_aboutMe_figure_info_details_title}>Phone:</div>
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.phone}</div>
                 <div className={classes.info_aboutMe_figure_info_details_title}>Interests:</div>
