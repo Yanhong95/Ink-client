@@ -56,7 +56,7 @@ const PersonalNote = props => {
     leftNav =
       <Aux>
         <NoteList/>
-        <Backdrop show={showNoteList} position={{left: 0, top: '8vh'}} clicked={closeleftNav} />
+        <Backdrop show={showNoteList} position={{left: 0, top: 0}} clicked={closeleftNav} />
       </Aux>
   } else {
     if (props.loadingTopics) {
