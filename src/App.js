@@ -27,7 +27,7 @@ const App = props => {
 
   let routes = (
     <Switch>
-      <Route path="/" exact render={(props) => <PersonalNote {...props} />} />
+      <Route path="/" exact render={(props) => <PersonalInfo {...props} />} />
       <Route path="/algorithm"  key="algorithm" render={(props) => <PersonalNote {...props} />} />
       <Route path="/javascript"  key="javascript" render={(props) => <PersonalNote {...props} />} />
       <Route path="/nodejs"  key="nodejs" render={(props) => <PersonalNote {...props} />} />
