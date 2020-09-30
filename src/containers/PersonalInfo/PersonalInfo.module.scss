@@ -14,7 +14,7 @@
     grid-template-columns: 1rf;
   }
   @media only screen and (max-width: $bp-small) {
-    grid-template-rows: minmax(min-content, 40vh) repeat(3, min-content) repeat(2, min-content) 20vh 5vh;
+    grid-template-rows: minmax(min-content, 40vh) repeat(3, min-content) repeat(2, min-content) 10vh 5vh;
     grid-template-columns: 1rf;
   }
 
@@ -289,12 +289,10 @@
               animation: bouncy 4s infinite linear;
               position: relative;
             }
-
             button {
               @include btn;
             }
           }
-
         }
       }
 
@@ -311,8 +309,13 @@
         z-index: 1;
       }
 
+      @media only screen and (max-width: $bp-small) {
+        &::before {
+          top: -1.5rem;
+          font-size: 8vmin;
+        }
+      }
     }
-
   }
 
   &_followMe {
