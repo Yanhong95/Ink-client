@@ -41,8 +41,11 @@ Reactivate the SendGrid
 ### Phase three:
 
 - WebSockets for automatic push of new notes
+- reset password
 
 <hr>
+
+Psw: inktest123! 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
