@@ -70,7 +70,7 @@ const PersonalNote = props => {
   if (props.loadingCurrentNote) {
     rightNav = <SpinnerCircle />
   } else if (!props.currentNoteId || props.error) {
-    rightNav = <IntroNote />
+    rightNav = <IntroNote currentPath={props.location.pathname.split('/')[1]} />
   } else {
     rightNav = <CurrentNote />
   }

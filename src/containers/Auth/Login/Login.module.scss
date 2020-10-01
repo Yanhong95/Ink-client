@@ -28,6 +28,11 @@
 
     @media only screen and (max-width: $bp-medium) {
       grid-column: 1/-1;
+      padding: 3rem 3rem;
+    }
+    
+    @media only screen and (max-width: $bp-small) {
+      padding: 3rem 1rem;
     }
 
     h2 {

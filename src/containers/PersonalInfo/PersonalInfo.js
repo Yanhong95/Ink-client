@@ -27,14 +27,15 @@ const PersonalInfo = props => {
     // send the actual request
     try {
       const response = await axiosInstance.get('/s3/getS3Resume',{"responseType": "blob" });
-      console.log(response);
-      // const resBody = await response.blob();
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'Resume_of_Yanhong_Chen.pdf'); 
-      document.body.appendChild(link);
-      link.click();
+      // const url = window.URL.createObjectURL(new Blob([response.data]));
+      // const link = document.createElement('a');
+      // link.href = url;
+      // link.setAttribute('download', 'Resume_of_Yanhong_Chen.pdf'); 
+      // document.body.appendChild(link);
+      // link.click();
+      const url = window.URL.createObjectURL(new Blob([response.data], { type: "application/pdf" }));
+      const pdfWindow = window.open();
+      pdfWindow.location.href = url;       
     } catch (error) {
       console.log(error.message);
     }
@@ -116,7 +117,7 @@ const PersonalInfo = props => {
                 <div className={classes.info_aboutMe_figure_info_details_title}>Interests:</div>
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.interests}</div>
                 <div className={classes.info_aboutMe_figure_info_details_resume}>
-                  <button className={classes.info_aboutMe_figure_info_details_resume_bouncy} onClick={loadResume} href="desumeDownload">Resume Download</button>
+                  <button className={classes.info_aboutMe_figure_info_details_resume_bouncy} onClick={loadResume} href="resumeDownload">Resume</button>
                 </div>
               </div>
             </div>

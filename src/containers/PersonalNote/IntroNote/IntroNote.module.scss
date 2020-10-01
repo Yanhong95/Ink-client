@@ -31,15 +31,16 @@
     li{
       display: flex;
       align-items: center;
-      margin-left: 2vmin;
+      justify-content: space-around;
       height: 7vmin;
       color: $color-primary;
 
       svg{
-        margin-right: 6vmin;
+        flex: 1%;
       }
 
       p{
+        flex: 70%;
         font-size: 2vmin;
         @media only screen and (max-width: $bp-medium) {
           font-size: 1.5vmin;
@@ -47,4 +48,14 @@
       }
     }
    }
+}
+
+.active{
+  font-size: 3vmin;
+  svg{
+    color: #b490ca;
+  }
+  p{
+    font-weight: 500;
+  }
 }

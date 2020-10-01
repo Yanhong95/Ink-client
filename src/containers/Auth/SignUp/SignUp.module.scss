@@ -29,6 +29,10 @@
 
     @media only screen and (max-width: $bp-medium) {
       grid-column: 1/-1;
+      padding: 3rem 3rem;
+    }
+    @media only screen and (max-width: $bp-small) {
+      padding: 3rem 1rem;
     }
 
     h2 {
@@ -41,7 +45,7 @@
     h6 {
       @include heading-6-dark;
       color: $color-secondary;
-      font-size: 1.5rem;
+      font-size: 1.5vmin;
       grid-row: 2/3;
       grid-column: 1/-1;
       text-align: center;
