@@ -84,7 +84,7 @@ const PersonalInfo = props => {
                   {theWorkExperience.duty ? <Aux><div className={classes.info_workExperience_figure_exp_content}>{theWorkExperience.duty}</div><br /></Aux> : null}
                   {dutyList}
                 </div>
-                {index !== workExperience.length - 1 ? <hr /> : null}
+                {/* {index !== workExperience.length - 1 ? <hr /> : null} */}
               </Aux>)
             })}
           </figure>
