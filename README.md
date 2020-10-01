@@ -1,4 +1,4 @@
-### **Ink client side**
+## **Ink client side**
 
 The purpose of developing the website is to enjoy the fun of dynamic design, to polish and improve my React and Nodejs Skills as well.  
 
@@ -41,6 +41,12 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 - WebSockets for automatic push of new notes
 - Reset password
 
+
+
+
+
+
+## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
