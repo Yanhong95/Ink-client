@@ -21,7 +21,7 @@ const App = props => {
   const { onTryAutoSignup } = props;
 
   useEffect(() => {
-    console.log(process.env.NODE_ENV + " " + process.env.REACT_APP_DEV_SERVICE_URL + " " + process.env.REACT_APP_PRO_SERVICE_URL);
+    // console.log(process.env.NODE_ENV + " " + process.env.REACT_APP_DEV_SERVICE_URL + " " + process.env.REACT_APP_PRO_SERVICE_URL);
     onTryAutoSignup();
   }, [onTryAutoSignup])
 
