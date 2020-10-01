@@ -17,7 +17,7 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 
 ### To be continued: 
 
-### Phase two: 
+### Phase one: 
 
 - 👌&ensp;Styling of the note page.
 - 👌&ensp;Add info page to blank note when user first loading.
@@ -40,11 +40,6 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 
 - WebSockets for automatic push of new notes
 - Reset password
-
-
-<hr>
-
-Psw: inktest123! 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

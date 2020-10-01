@@ -7,7 +7,7 @@ import { faReact, faNodeJs, faJsSquare, } from '@fortawesome/free-brands-svg-ico
 
 
 const IntroNode = (props) => {
-  console.log(props.currentPath);
+  // console.log(props.currentPath);
   const path = props.currentPath;
   return (
     <Aux>
