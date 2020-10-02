@@ -7,14 +7,13 @@ import Btn from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader/Loader';
 import Dropzone from '../../components/UI/Dropzone/Dropzone';
 import Modal from '../../components/UI/Modal/Modal';
-import { axiosInstance } from '../../shared/utility';
+import { axiosInstance, consoleHelper } from '../../shared/utility';
 
 // 实现, 拖拽上传
 // 点击名称可修改文件名但是不能修改后缀, 
 // 只填category不填topic不行
 // 显示上传文件名称并检查重复
 // 没有选择topic和category不能上传,
-
 //上传完成后更新currentCatalogList.
 
 const Upload = props => {
@@ -33,13 +32,13 @@ const Upload = props => {
     if (props.currentCatalog == null) {
       props.loadCatalog();
     } else {
-      // console.log(props.currentCatalog);
+      // consoleHelper(props.currentCatalog);
       setTopics(props.currentCatalog.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.currentCatalog]);
 
-  console.log(props.currentCatalog);
+  consoleHelper(props.currentCatalog);
 
   const clearState = () => {
     setCurrentStructure({ topic: null, subcategory: null, file: null });
@@ -54,7 +53,8 @@ const Upload = props => {
     clearState();
   }
 
-  console.log(subcategories);
+  consoleHelper(subcategories);
+
   const inputRef = useRef();
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -120,7 +120,7 @@ const Upload = props => {
         setError(null);
         return;
       }
-      console.log(currTopic);
+      // console.log(currTopic);
       if (topics.map(topic => topic.toLowerCase()).includes(currTopic.toLowerCase())) {
         currTopic = topics[topics.map(topic => topic.toLowerCase()).indexOf(currTopic.toLowerCase())];
         const filter = props.currentCatalog.filter(currentCatalog => currentCatalog.name.toLowerCase() === currTopic.toLowerCase())[0]

@@ -20,6 +20,7 @@
     line-height: 5vh;
     width: 90%;
     @include heading-3-normal;
+    font-size: 1.7rem;
     color: $color-primary-light;
     margin-left: 5%;
     margin-right: 5%;
@@ -38,7 +39,6 @@
     }
 
     &:hover {
-      color: $color-liner-yellow;
       cursor: pointer;
       width: 96%;
       margin-left: 2%;

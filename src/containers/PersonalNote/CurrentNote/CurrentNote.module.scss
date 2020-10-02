@@ -58,6 +58,11 @@
     font-size: 1.7vmin !important;
   }
 
+  h5, h4, h3, h2, h1{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
   pre {
     padding: 3rem 3rem 3rem 3rem;
     background-color: $color-primary-dark;

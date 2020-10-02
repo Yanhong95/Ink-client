@@ -5,18 +5,21 @@
 .Modal {
     position: fixed;
     z-index: 500;
-    background-color: white;
     border-radius: 1rem;
     box-shadow: 1px 1px 1px black;
     background: $color-liner-yellow;
-    padding: 16px;
+    margin: 0 6vmin;
+    padding: 6vmin;
     top: 40%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
     text-align: center;
     @include heading-2-light;
-    font-size: 4vmin;;
-    color: $color-blue-dark
+    color: $color-blue-dark;
+
+    div{
+        font-size: 3rem;
+    }
 }
 
 @media (min-width: 600px) {
