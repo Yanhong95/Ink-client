@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classes from '../Login/Login.module.scss';
 import * as actions from '../../../store/actions/index';
-import SpinnerSquare from '../../../components/UI/Spinner/SpinnerSquare';
+import SpinnerCircle from '../../../components/UI/Spinner/SpinnerCircle';
 import loginImage from '../../../assets/images/programming2.png'
 import Aux from '../../../higherOrderComponent/Aux/Aux';
 
@@ -49,7 +49,7 @@ const VerifyEmail = props => {
   let mainContent = null
 
   if (props.loading) {
-    mainContent = <SpinnerSquare />
+    mainContent = <SpinnerCircle />
   }
 
   if (props.verifiedEmail) {
