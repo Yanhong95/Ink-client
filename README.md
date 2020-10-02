@@ -25,6 +25,7 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 - 👌&ensp;Hide left side category bar when the screen is too small.
 - 👌&ensp;Change markdown code type base on topic.
 - 👌&ensp;login and signup styling in small screen
+- 👌&ensp;Add label after hover on icons
 
 ### Phase two:
 

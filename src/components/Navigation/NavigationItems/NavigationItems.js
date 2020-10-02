@@ -11,23 +11,23 @@ import { faReact, faNodeJs, faJsSquare, } from '@fortawesome/free-brands-svg-ico
 const navigationItems = (props) => {
     return (
         <Aux>
-            <NavigationItem link="/algorithm">
+            <NavigationItem link="/algorithm" label="Algorithm">
                 <FontAwesomeIcon icon={faRocket} size="1x" />
                 {/* <Icon name="file-tray-full-outline"></Icon> */}
             </NavigationItem>
-            <NavigationItem link="/javascript">
+            <NavigationItem link="/javascript" label="JavaScript">
                 <FontAwesomeIcon icon={faJsSquare} size="1x" />
                 {/* <Icon name="layers-outline"></Icon> */}
             </NavigationItem>
-            <NavigationItem link="/nodejs">
+            <NavigationItem link="/nodejs" label="NodeJS">
                 <FontAwesomeIcon icon={faNodeJs} size="1x" />
                 {/* <Icon name="layers-outline"></Icon> */}
             </NavigationItem>
-            <NavigationItem link="/react">
+            <NavigationItem link="/react" label="React">
                 <FontAwesomeIcon icon={faReact} size="1x" />
                 {/* <Icon name="layers-outline"></Icon> */}
             </NavigationItem>
-            {props.isAdmin ? <NavigationItem link="/upload">
+            {props.isAdmin ? <NavigationItem link="/upload" label="Upload">
             <FontAwesomeIcon icon={faCloudUploadAlt} size="1x" />
                 {/* <Icon name="cloud-upload-outline"></Icon> */}
             </NavigationItem> : null}
