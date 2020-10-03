@@ -13,16 +13,17 @@
         width: 10rem;
     }
 
-    .navLabel{
-        display: none;
-    }
-
     a {
         font-size: 2.7rem;
         color: #fff;
         text-decoration: none;
         display: flex;
+        flex-direction: column;
         align-items: center;
+    }
+
+    &_label{
+        display: none;
     }
 
     &:hover {
@@ -31,11 +32,11 @@
             transform: scale(1.1);
         }
 
-        .navLabel{
-            padding-top: 0.5rem;
+        div{
             color: $color-blue;
             display: inline-block;
-            cursor: default;
+            padding-top: 0.5rem;
+            font-size: 1rem;
         }
     }
 }

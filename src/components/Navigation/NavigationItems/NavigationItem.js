@@ -11,7 +11,6 @@ const navigationItem = (props) => (
             activeClassName={classes.active}>
             {props.children}
         </NavLink>
-        {props.label ? <div className={classes.navLabel}>{props.label}</div> : null}
     </div>
 );
 
