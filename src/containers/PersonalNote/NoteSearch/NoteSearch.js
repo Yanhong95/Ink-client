@@ -4,25 +4,26 @@ import classes from './NoteSearch.module.scss';
 
 const NoteSearch = props => {
 
-  const [enteredFilter, setEnteredFilter] = useState('');
+  const [filter, setFilter] = useState({enteredFilter: '', untouched: true});
   const inputRef = useRef();
 
   useEffect(() => {
+    if(filter.untouched) return;
     const timer = setTimeout(() => {
-      if (enteredFilter === inputRef.current.value) {
-        props.filter(enteredFilter);
+      if (filter.enteredFilter === inputRef.current.value) {
+        props.filter(filter.enteredFilter);
       }
     }, 1000);
     return () => {
       clearTimeout(timer);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enteredFilter, inputRef])
+  }, [filter.enteredFilter, inputRef])
 
   return (<div className={classes.noteSearch}>
     <input className={classes.noteSearch_input} ref={inputRef} 
       placeholder='Search...' 
-      onChange={event => setEnteredFilter(event.target.value)}/>
+      onChange={event => setFilter({ enteredFilter: event.target.value, untouched: false })}/>
   </div>)
 
 }

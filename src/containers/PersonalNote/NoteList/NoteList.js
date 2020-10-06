@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import classes from './NoteList.module.scss';
 import * as actions from '../../../store/actions/index';
@@ -11,9 +11,9 @@ const NoteList = props => {
   const [activeNote, setActiveNote] = useState(null);
   const [currentTopic, setCurrentTopic] = useState(null);
 
-  if(currentTopic == null && props.currentTopic){
+  useEffect(() => {
     setCurrentTopic(props.currentTopic);
-  }
+  }, [props.currentTopic]);
 
   // The state updater returned by useState will not rerender the component's children 
   // if you set a new value that equals the current value

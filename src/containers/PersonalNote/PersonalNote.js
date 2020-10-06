@@ -55,14 +55,14 @@ const PersonalNote = props => {
   if (smallScreen) {
     leftNav =
       <Aux>
-        <NoteList/>
+        <NoteList currentPath={props.location.pathname.split('/')[1]}/>
         <Backdrop show={showNoteList} position={{left: 0, top: 0}} clicked={closeleftNav} />
       </Aux>
   } else {
     if (props.loadingTopics) {
       leftNav = <div className={classes.note_left_spinner}><SpinnerCircle /></div>
     } else {
-      leftNav = <NoteList />
+      leftNav = <NoteList currentPath={props.location.pathname.split('/')[1]} />
     }
   }
 
