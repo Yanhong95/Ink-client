@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+// import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import classes from './UserInfo.module.scss';
 // import * as actions from '../../../store/actions/index';

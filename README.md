@@ -29,17 +29,18 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 
 ### Phase two:
 
-- Allow users to search notes bast on the title.
-- note deletion
+- 👌&ensp;Preparation for userinfo component and noteSearch component.
+- 👌&ensp;Allow users to search notes bast on the title.
+- note deletion. (admin)
 - upload page optimization.
-- Allow users to leave comments after login. and browse other’s comments.
-- user can like notes
-- user should see their profile, the profile should editable, should list loved notes and comments, jumping to the note when clicking it.
+- Allow users to leave comments after login. and browse other’s comments. (user)
+- user can like notes. (user)
+- user should see their profile, the profile should editable, should list loved notes and comments, jumping to the note when clicking it. (user)
 
 ### Phase three:
 
 - WebSockets for automatic push of new notes
-- Reset password
+- Reset password 
 
 
 

@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 import classes from './NoteList.module.scss';
 import * as actions from '../../../store/actions/index';
 import Aux from '../../../higherOrderComponent/Aux/Aux'
+import NoteSearch from '../NoteSearch/NoteSearch';
 
 const NoteList = props => {
 
   const [subList, setSubList] = useState([]);
   const [activeNote, setActiveNote] = useState(null);
+  const [currentTopic, setCurrentTopic] = useState(null);
+
+  if(currentTopic == null && props.currentTopic){
+    setCurrentTopic(props.currentTopic);
+  }
 
   // The state updater returned by useState will not rerender the component's children 
   // if you set a new value that equals the current value
@@ -24,16 +30,39 @@ const NoteList = props => {
 
   const loadNote = (noteId, noteName) => {
     setActiveNote(noteId);
-    if(props.loadedNotes[noteId]){
+    if (props.loadedNotes[noteId]) {
       props.replaceCurrentNote(noteId, noteName);
-    }else{
+    } else {
       props.loadCurrentNote(noteId, noteName)
     }
   }
 
+  const filter = (enteredFilter) =>{
+    if(enteredFilter === ""){
+      setCurrentTopic(props.currentTopic);
+    }else{
+      const searchInput = enteredFilter.toLowerCase();
+      const newCurrentTopic = [];
+      props.currentTopic.map(subcategories => {
+        const newSubcategories = {...subcategories};
+        const newNotes = subcategories.notes.filter(note => note.name.toLowerCase().includes(searchInput));
+        if(newNotes.length === 0){
+          if(subcategories.name.toLowerCase().includes(searchInput)){
+            newCurrentTopic.push(subcategories);
+          }
+        }else{
+          newSubcategories.notes = newNotes;
+          newCurrentTopic.push(newSubcategories);
+        }
+        return null;
+      });
+      setCurrentTopic(newCurrentTopic);
+    }
+  }
+
   let topicList = null;
-  if (props.currentTopic) {
-    topicList = props.currentTopic.map(subcategories => {
+  if (currentTopic && currentTopic.length > 0) {
+    topicList = currentTopic.map(subcategories => {
       return (
         <Aux key={subcategories._id}>
           <div className={classes.topicList_topic} onClick={() => triggerTheTopic(subcategories._id)}>
@@ -46,23 +75,26 @@ const NoteList = props => {
             subcategories.notes.map(note => {
               return (
                 <div key={note._id} className={classes.topicList_topic_note}
-                  onClick={() => loadNote(note._id, note.name)}
-                  >
+                  onClick={() => loadNote(note._id, note.name)}>
                   <div className={classes.topicList_topic_note_text}>
-                  <p className={activeNote === note._id ? classes.topicList_topic_note_text_active : null}>{note.name}</p>
+                    <p className={activeNote === note._id ? classes.topicList_topic_note_text_active : null}>{note.name}</p>
                   </div>
                 </div>
               );
-            })
-            : null
+            }): null
           }
         </Aux>
       );
     });
+  }else{
+    topicList = <div className={classes.topicList_message}> Empty result.</div>
   }
 
   return (
-    <div className={classes.topicList}>{topicList}</div>
+    <Aux>
+      <NoteSearch filter={(enteredFilter) => filter(enteredFilter)}/>
+      <div className={classes.topicList}>{topicList}</div>
+    </Aux>
   )
 }
 

@@ -1,0 +1,39 @@
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/mixin.scss';
+@import '../../../shared/scss/typography.scss';
+
+
+.noteSearch{
+  height: 6vh;
+  display: flex;
+  width: 100%;
+  padding: 1rem 1rem 1rem 1rem;
+  z-index: 20;
+
+  &_input{
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    background-color: $color-primary-darkest;
+    border: 1px solid $color-primary-darkest;
+    border-radius: 3px;
+    background-image: url('../../../assets/images/search-lenses-tool.svg');
+    background-repeat: no-repeat;
+    background-position: 98%;
+    background-size: 15px 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    color: $color-primary-light;
+
+    svg{
+      fill: red;
+    }
+
+    &:hover,
+    &:focus{
+        outline: none;
+        color: $color-primary-light;
+       //  border: 1px solid $color-blue-dark;
+    }
+  }
+
+}
