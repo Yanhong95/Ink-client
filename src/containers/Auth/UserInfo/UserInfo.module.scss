@@ -1,0 +1,45 @@
+@import '../../../shared/scss/variables.scss';
+@import '../../../shared/scss/typography.scss';
+@import '../../../shared/scss/mixin.scss';
+
+.userInfo_outer {
+  width: 95vw;
+  height: 100vh;
+  background-color: $color-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: $bp-large) {
+    width: 95vw;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    width: 100vw;
+  }
+}
+
+.userInfo{
+  width: 84vw;
+  height: 82vh;
+  background-color: $color-primary-dark;
+  box-shadow: $shadow-dark;
+  display: grid;
+  padding: 3vw;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 3rem;
+  // to be removed...
+  color: $color-blue-dark;
+  font-size: larger;
+
+  @media only screen and (max-width: $bp-large) {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    width: 100vw;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, 1fr);
+  }
+}

@@ -13,7 +13,7 @@ const Upload = React.lazy(() => import('./containers/Upload/Upload'));
 const PersonalInfo = React.lazy(() => import('./containers/PersonalInfo/PersonalInfo'));
 const PersonalNote = React.lazy(() => import('./containers/PersonalNote/PersonalNote'));
 const VerifyEmail = React.lazy(() => import('./containers/Auth/VerifyEmail/VerifyEmail'));
-
+const UserInfo = React.lazy(() => import('./containers/Auth/UserInfo/UserInfo'));
 const App = props => {
 
   useScript('https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js', 'module');
@@ -50,7 +50,9 @@ const App = props => {
         <Route path="/javascript" key="javascript" render={(props) => <PersonalNote {...props} />} />
         <Route path="/nodejs"  key="nodejs" render={(props) => <PersonalNote {...props} />} />
         <Route path="/react"  key="react" render={(props) => <PersonalNote {...props} />} />
+        <Route path="/userInfo"  key="userInfo" render={(props) => <UserInfo {...props} />} />
         <Route path="/logout" component={Logout} />
+        
         {props.isAdmin ? <Route path="/upload" render={(props) => <Upload {...props} />} /> : null}
         <Redirect to="/" />
       </Switch>

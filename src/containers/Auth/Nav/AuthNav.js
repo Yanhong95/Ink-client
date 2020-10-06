@@ -27,7 +27,7 @@ const AuthNav = props => {
   if (props.isAuthenticated) {
     currDisplay = (
       <div className={classes.authNav}>
-        <NavigationItem link="/">
+        <NavigationItem link="/userInfo">
           <img src={image} alt="userImage" />
         </NavigationItem>
         <NavigationItem link="/logout">
