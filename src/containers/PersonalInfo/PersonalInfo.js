@@ -3,7 +3,7 @@ import classes from './PersonalInfo.module.scss';
 import Aux from '../../higherOrderComponent/Aux/Aux';
 import portrait from '../../assets/images/portrait.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import  { axiosInstance }  from '../../shared/utility'
+import { axiosInstance } from '../../shared/utility'
 import { faLinkedin, faGithub, faInstagram, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 import { aboutMe, summary, skills, education, projectExperience, workExperience } from "../../assets/json/CYH_info.json";
 
@@ -26,7 +26,7 @@ const PersonalInfo = props => {
     setIsSending(true)
     // send the actual request
     try {
-      const response = await axiosInstance.get('/s3/getS3Resume',{"responseType": "blob" });
+      const response = await axiosInstance.get('/s3/getS3Resume', { "responseType": "blob" });
       // const url = window.URL.createObjectURL(new Blob([response.data]));
       // const link = document.createElement('a');
       // link.href = url;
@@ -35,7 +35,7 @@ const PersonalInfo = props => {
       // link.click();
       const url = window.URL.createObjectURL(new Blob([response.data], { type: "application/pdf" }));
       const pdfWindow = window.open();
-      pdfWindow.location.href = url;       
+      pdfWindow.location.href = url;
     } catch (error) {
       console.log(error.message);
     }
@@ -43,7 +43,7 @@ const PersonalInfo = props => {
     if (isMounted.current) // only update if we are still mounted
       setIsSending(false)
   }, [isSending]) // update the callback if the state changes
- 
+
   return (
     <Aux>
       <div className={classes.info}>
@@ -116,11 +116,11 @@ const PersonalInfo = props => {
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.phone}</div>
                 <div className={classes.info_aboutMe_figure_info_details_title}>Interests:</div>
                 <div className={classes.info_aboutMe_figure_info_details_content}>{aboutMe.interests}</div>
-                <div className={classes.info_aboutMe_figure_info_details_resume}>
-                  <button className={classes.info_aboutMe_figure_info_details_resume_bouncy} onClick={loadResume} href="resumeDownload">Resume</button>
-                </div>
               </div>
             </div>
+            <div className={classes.info_aboutMe_figure_resume}>
+                <button className={classes.info_aboutMe_figure_resume_bouncy} onClick={loadResume} href="resumeDownload">Resume</button>
+              </div>
           </figure>
         </section>
         <section className={classes.info_followMe}>
@@ -134,7 +134,7 @@ const PersonalInfo = props => {
         </section>
         <section className={classes.info_copyright}>
           <figure className={classes.info_copyright_figure}>
-              <h5>© 2020 by Yanhong Chen. All rights reserved.</h5>
+            <h5>© 2020 by Yanhong Chen. All rights reserved.</h5>
           </figure>
         </section>
       </div>
