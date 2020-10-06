@@ -220,7 +220,7 @@ const Upload = props => {
   }
 
   const mainPage = (
-    <div className={classes.upload_outter}>
+    <div className={classes.upload_outer}>
     <div className={classes.upload}>
       <div className={classes.upload_title}>Upload</div>
       <div className={classes.upload_fileName}>
