@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { xonokai } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+const jsList = [ 'react', 'js']
 
 class CodeBlock extends PureComponent {
   static propTypes = {
@@ -15,7 +16,8 @@ class CodeBlock extends PureComponent {
   };
 
   render() {
-    const language = this.props.language !== "react" ? this.props.language: "javascript";
+    console.log(this.props.language);
+    const language = jsList.includes(this.props.language.toLowerCase()) ?  "javascript" : this.props.language ;
     return (
       <SyntaxHighlighter language={language} style={xonokai}>
         {this.props.value}
