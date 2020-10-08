@@ -53,15 +53,13 @@ export const uploadFileFail = (error) => {
 // todo handle error
 export const uploadFile = (uploadFile, token) => {
   return async dispatch => {
-    console.log(uploadFile);
-    console.log(token);
+    // console.log(uploadFile);
+    // console.log(token);
     dispatch(uploadFileStart());
     try {
       const uploadFolder = `${S3Object.noteFolder}/${uploadFile.topic}/${uploadFile.subcategory}`
       const resObject = await getSignedURL(uploadFolder, uploadFile.file.name, uploadFile.file.type, token);
       const fileURL = await uploadFileToS3(uploadFolder, uploadFile.file, resObject);
-      console.log(resObject);
-      console.log(fileURL);
       const res = await axiosInstance.post('/note/addNote', 
       {
         topic: uploadFile.topic,
@@ -73,7 +71,6 @@ export const uploadFile = (uploadFile, token) => {
           Authorization: 'Bearer ' + token,
         }
       });
-      // console.log(res.data);
       dispatch(uploadFileSuccess(res.data.message, uploadFile.topic));
     } catch (err) {
       dispatch(uploadFileFail(err.response ? err.response.data.message : err.message));
