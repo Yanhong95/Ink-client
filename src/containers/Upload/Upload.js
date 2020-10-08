@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classes from './Upload.module.scss';
 import * as actions from '../../store/actions/index';
 import Aux from '../../higherOrderComponent/Aux/Aux';
-import Btn from '../../components/UI/Button/Button';
+import Button from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader/Loader';
 import Dropzone from '../../components/UI/Dropzone/Dropzone';
 import Modal from '../../components/UI/Modal/Modal';
@@ -240,7 +240,7 @@ const Upload = props => {
       }
       </div>
       <div className={classes.upload_submit}>
-        <Btn disabled={disable.submit} clicked={handleUpload}>Submit</Btn>
+        <Button disabled={disable.submit} clicked={handleUpload}>Submit</Button>
       </div>
     </div>
   </div>

@@ -16,8 +16,8 @@ class CodeBlock extends PureComponent {
   };
 
   render() {
-    console.log(this.props.language);
-    const language = jsList.includes(this.props.language.toLowerCase()) ?  "javascript" : this.props.language ;
+    // console.log(this.props.language);
+    const language = jsList.includes(this.props.language ? this.props.language.toLowerCase() : '') ?  "javascript" : this.props.language;
     return (
       <SyntaxHighlighter language={language} style={xonokai}>
         {this.props.value}

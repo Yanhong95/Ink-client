@@ -7,4 +7,13 @@ button {
         color: #ccc;
         cursor: not-allowed;
     }
+};
+
+.danger{
+    @include btn-danger;
+
+    &:disabled {
+        color: #ccc;
+        cursor: not-allowed;
+    }
 }

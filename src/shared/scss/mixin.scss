@@ -59,5 +59,39 @@
 
   &:active {
     transform: translateY(2px);
+  }
 }
+
+
+@mixin btn-danger {
+  display: inline-block;
+  padding: 0.4em 2em;
+  background-color: $color-primary;
+  border: 0.16em solid $color-blue-dark;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: $color-blue-dark;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+
+  &:focus{
+    outline: none;
+  }
+  
+  &:hover {
+    background: none;
+    border: 0.16em solid $color-secondary;
+    background-color:  $color-secondary;
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
 }

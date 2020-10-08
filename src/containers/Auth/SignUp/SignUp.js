@@ -102,7 +102,7 @@ const AuthSignUp = props => {
   let mainContent = (
     <Aux>
       {form}
-      <Button btnType="Success" disabled={!disabled}>SUBMIT</ Button>
+      <Button disabled={!disabled}>SUBMIT</Button>
     </Aux>
   )
   if (props.loading) {

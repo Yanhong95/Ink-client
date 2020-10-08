@@ -12,10 +12,20 @@
     padding: 2rem 3rem 2rem 3rem;
   }
 
-  &_title{
-    @include heading-4-white;
-    font-size: 4vmin;
-    color: $color-primary-light;
+  &_header{
+    display: flex;
+    align-items: center;
+    &_title{
+      flex: 80%;
+      @include heading-4-white;
+      font-size: 4vmin;
+      color: $color-primary-light;
+    }
+
+    &_remove{
+      display: 1;
+      color: $color-secondary
+    }
   }
 
   a {
