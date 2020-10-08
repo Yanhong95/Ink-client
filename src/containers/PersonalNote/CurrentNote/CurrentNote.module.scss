@@ -28,6 +28,19 @@
     }
   }
 
+  &_comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+
+    &_content{
+      padding: 2rem;
+      border: 0.4rem solid $color-primary-light;
+      border-radius: 1rem;
+    }
+  }
+
   a {
     color: $color-blue;
     text-decoration: none;

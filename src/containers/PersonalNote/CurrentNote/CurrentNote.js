@@ -32,7 +32,9 @@ const CurrentNote = props => {
       <button className={ showScrollBtn ?  classes.scroll : [classes.scroll, classes.hidden]} onClick={() => scrollToRef(myRef)}>
         <FontAwesomeIcon icon={faAngleDoubleUp} color="white" size="2x" />
       </button>
-
+      <div className={classes.note_comment}>
+        <div className={classes.note_comment_content}>The comment function is under construction...</div>
+      </div>
     </div>
   )
 }
