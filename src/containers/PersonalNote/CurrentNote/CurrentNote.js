@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import classes from './CurrentNote.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../../components/UI/Button/Button';
+import DeleteBtn from '../../../components/UI/DeleteBtn/DeleteBtn'
+import * as actions from '../../../store/actions/index'
 
 const scrollToRef = (myRef) => {
   const myElement = document.getElementById("currNote");
@@ -21,15 +22,21 @@ const CurrentNote = props => {
   const onScroll = () => {
     SetShowScrollBth(true);
   }
+
+  const removeNote = () => {
+    props.deleteNote(props.currentCategoryId, props.currentNoteId, props.token);
+  }
+
   return (
     <div className={classes.note} id="currNote" onScroll={onScroll}>
       <div className={classes.note_header}>
         <div ref={myRef} className={classes.note_header_title}>{props.currentNoteName}</div>
-        <div className={classes.note_header_remove}>
-          <Button btnType="danger">Remove</Button></div>
+        {props.isAdmin ? <div className={classes.note_header_remove}>
+          <DeleteBtn remove={() => removeNote()} />
+        </div> : null}
       </div>
-      <ReadNote currentNoteContent={props.currentNote}/>
-      <button className={ showScrollBtn ?  classes.scroll : [classes.scroll, classes.hidden]} onClick={() => scrollToRef(myRef)}>
+      <ReadNote currentNoteContent={props.currentNote} />
+      <button className={showScrollBtn ? classes.scroll : [classes.scroll, classes.hidden]} onClick={() => scrollToRef(myRef)}>
         <FontAwesomeIcon icon={faAngleDoubleUp} color="white" size="2x" />
       </button>
       <div className={classes.note_comment}>
@@ -41,15 +48,19 @@ const CurrentNote = props => {
 
 const mapStateToProps = state => {
   return {
+    loadingCurrentNote: state.note.loadingCurrentNote,
     currentNote: state.note.currentNote ? state.note.currentNote : null,
     currentNoteId: state.note.currentNoteId ? state.note.currentNoteId : null,
     currentNoteName: state.note.currentNoteName ? state.note.currentNoteName : null,
+    currentCategoryId: state.note.currentCategoryId,
+    isAdmin: state.auth.isAdmin,
+    token: state.auth.token,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    // loadCurrentNote: (noteId) => dispatch(actions.loadCurrentNote(noteId))
+    deleteNote: (categoryId, noteId, token) => dispatch(actions.deleteNote(categoryId, noteId, token))
   };
 };
 

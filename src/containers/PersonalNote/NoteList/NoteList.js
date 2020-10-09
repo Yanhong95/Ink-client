@@ -28,12 +28,12 @@ const NoteList = props => {
     }
   }
 
-  const loadNote = (noteId, noteName) => {
+  const loadNote = (noteId, noteName, subcategoriesId) => {
     setActiveNote(noteId);
     if (props.loadedNotes[noteId]) {
-      props.replaceCurrentNote(noteId, noteName);
+      props.replaceCurrentNote(noteId, noteName, subcategoriesId);
     } else {
-      props.loadCurrentNote(noteId, noteName)
+      props.loadCurrentNote(noteId, noteName, subcategoriesId)
     }
   }
 
@@ -75,7 +75,7 @@ const NoteList = props => {
             subcategories.notes.map(note => {
               return (
                 <div key={note._id} className={classes.topicList_topic_note}
-                  onClick={() => loadNote(note._id, note.name)}>
+                  onClick={() => loadNote(note._id, note.name, subcategories._id)}>
                   <div className={classes.topicList_topic_note_text}>
                     <p className={activeNote === note._id ? classes.topicList_topic_note_text_active : null}>{note.name}</p>
                   </div>
@@ -107,8 +107,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadCurrentNote: (noteId, noteName) => dispatch(actions.loadCurrentNote(noteId, noteName)),
-    replaceCurrentNote: (noteId, noteName) => dispatch(actions.replaceCurrentNote(noteId, noteName))
+    loadCurrentNote: (noteId, noteName, subcategoriesId) => dispatch(actions.loadCurrentNote(noteId, noteName, subcategoriesId)),
+    replaceCurrentNote: (noteId, noteName, subcategoriesId) => dispatch(actions.replaceCurrentNote(noteId, noteName, subcategoriesId))
   };
 };
 

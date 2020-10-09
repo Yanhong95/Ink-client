@@ -16,15 +16,17 @@
     display: flex;
     align-items: center;
     &_title{
-      flex: 80%;
+      flex: 70%;
       @include heading-4-white;
       font-size: 4vmin;
       color: $color-primary-light;
     }
 
     &_remove{
-      display: 1;
-      color: $color-secondary
+      flex: 30%;
+      color: $color-secondary;
+      display: flex;
+      justify-content: center;
     }
   }
 

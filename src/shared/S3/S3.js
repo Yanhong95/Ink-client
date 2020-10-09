@@ -13,10 +13,10 @@ export const getSignedURL = async ( uploadFolder, fileName, fileType, token) => 
   try {
     const res = await axiosInstance.get(`/s3/getS3SignedUrl?${validateURL}`, {
       headers: {
-        Authorization: 'Bearer ' + token,
+        authorization: 'Bearer ' + token,
       }
     });
-    console.log(res);
+    // console.log(res);
     return res.data;
   } catch (error) {
     throw error;

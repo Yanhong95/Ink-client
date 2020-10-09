@@ -7,12 +7,14 @@ const initialState = {
   currentNote: null,
   currentNoteId: null,
   currentNoteName: null,
+  currentTopicName: null,
   loadingTopics: false,
   loadingSubcategory: false,
   loadingCurrentNote: false,
   uploadNewNote: false,
   error: null,
-  loadedNotes: {}
+  loadedNotes: {},
+  currentCategoryId: null,
 };
 
 const loadTopicStart = (state, action) => {
@@ -26,6 +28,7 @@ const loadTopicSuccess = (state, action) => {
     error: null,
     loadingTopics: false,
     [action.topicTpye]: action.topics,
+    currentTopicName: action.topicTpye,
     currentNote: null,
     currentNoteId: null,
     currentNoteName: null,
@@ -44,7 +47,8 @@ const loadCurrentNoteSuccess = (state, action) => {
     currentNote: action.content,
     currentNoteId: action.nodeId,
     currentNoteName: action.noteName,
-    loadedNotes: newLoadedNotes
+    loadedNotes: newLoadedNotes,
+    currentCategoryId : action.subcategoriesId
   });
 };
 
@@ -59,11 +63,14 @@ const loadFail = (state, action) => {
 
 const changeToCurrentTopic = (state, action) => {
   const newCurrentTopic = [...state[action.topic]];
+  const currentTopic = action.topic;
   return updateObject(state, {
     currentTopic : newCurrentTopic,
     currentNote: null,
     currentNoteId: null,
     currentNoteName: null,
+    currentCategoryId: null,
+    currentTopicName: currentTopic
   })
 };
 
@@ -74,8 +81,33 @@ const replaceCurrentNote = (state, action) => {
     loadingCurrentNote: false,
     currentNote: loadedNote,
     currentNoteId: action.noteId,
-    currentNoteName: action.noteName
+    currentNoteName: action.noteName,
+    currentCategoryId : action.subcategoriesId
   });
+}
+
+const deleteCurrentNote = (state, action) => {
+  const categoryId = action.subcategoriesId;
+  const noteId = action.noteId;
+  const currentCategoryIndex = state.currentTopic.findIndex(category => category._id === categoryId);
+  const currentCategory = {...state.currentTopic[currentCategoryIndex]};
+  const newNotes = currentCategory.notes.filter(note => note._id !==noteId);
+  currentCategory.notes = newNotes;
+  const newCurrentTopic = [...state.currentTopic];
+  newCurrentTopic[currentCategoryIndex] = currentCategory;
+  delete state.loadedNotes[noteId];
+  const currentTopicName = state.currentTopicName;
+  return updateObject(state, 
+    { error: null, 
+      loadingCurrentNote: false,
+      currentNote: null,
+      currentNoteId: null,
+      currentNoteName: null,
+      currentCategoryId: null,
+      loadedNotes: state.loadedNotes,
+      currentTopic: newCurrentTopic,
+      [currentTopicName]: newCurrentTopic
+    });
 }
 
 
@@ -92,6 +124,8 @@ const reducer = (state = initialState, action) => {
 
     case actionTypes.CHANGE_TO_CURRENT_TOPIC: return changeToCurrentTopic(state, action);
     case actionTypes.REPLACE_CURRENT_NOTE: return replaceCurrentNote(state, action);
+
+    case actionTypes.DELETE_NOTE_SUCCESS: return deleteCurrentNote(state, action);
     default:
       return state;
   }

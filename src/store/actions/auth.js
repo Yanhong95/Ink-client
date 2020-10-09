@@ -98,7 +98,7 @@ export const authLogin = (email, password) => {
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('isAdmin', response.data.isAdmin);
-        console.log(response.data.isAdmin);
+        // console.log(response.data.isAdmin);
         dispatch(authSuccess(response.data.idToken, response.data.userId, response.data.isAdmin));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })

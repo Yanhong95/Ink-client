@@ -44,7 +44,7 @@
   color: $color-blue;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s;
+  // transition: all 0.2s;
 
 
   &:focus{
@@ -63,21 +63,21 @@
 }
 
 
-@mixin btn-danger {
+@mixin btn-warning {
   display: inline-block;
-  padding: 0.4em 2em;
+  padding: 0.4em 1em;
   background-color: $color-primary;
   border: 0.16em solid $color-blue-dark;
+  color: $color-blue-dark;
   border-radius: 5px;
   box-sizing: border-box;
   text-decoration: none;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  color: $color-blue-dark;
+  font-size: 2vmin;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s;
 
 
   &:focus{
@@ -89,6 +89,72 @@
     border: 0.16em solid $color-secondary;
     background-color:  $color-secondary;
     color: #fff;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+
+@mixin btn-danger {
+  display: inline-block;
+  padding: 0.4em 1em;
+  border: 0.16em solid $color-secondary;
+  background-color:  $color-secondary;
+  color: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2vmin;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+
+  &:focus{
+    outline: none;
+  }
+
+  &:hover{
+    background: none;
+    border: 0.16em solid $color-secondary;
+    background-color:  $color-secondary;
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+@mixin btn-safe {
+  display: inline-block;
+  padding: 0.4em 1em;
+  border: 0.16em solid $color-blue;
+  background-color: $color-blue;
+  color: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 2vmin;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover{
+    background: none;
+    border: 0.16em solid $color-blue;
+    background-color: $color-blue;
+    color: #fff;
+  }
+
+
+  &:focus{
+    outline: none;
   }
 
   &:active {

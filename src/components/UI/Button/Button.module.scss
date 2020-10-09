@@ -9,9 +9,34 @@ button {
     }
 };
 
+.warning{
+    @include btn-warning;
+
+    &:disabled {
+        color: #ccc;
+        cursor: not-allowed;
+    }
+}
+
 .danger{
     @include btn-danger;
+    width: 12rem;
+    @media only screen and (max-width: $bp-medium) {
+        width: 13rem;
+    }
+    &:disabled {
+        color: #ccc;
+        cursor: not-allowed;
+    }
+    
+}
 
+.safe{
+    @include btn-safe;
+    width: 12rem;
+    @media only screen and (max-width: $bp-medium) {
+        width: 13rem;
+    }
     &:disabled {
         color: #ccc;
         cursor: not-allowed;

@@ -32,7 +32,7 @@ In addition, for me to have a place to post my daily notes about the algorithm p
 - 👌&ensp;Preparation for userinfo component and noteSearch component.
 - 👌&ensp;Allow users to search notes bast on the title.
 - 👌&ensp;Fixed error of rendering React language in .md file
-- note deletion. (admin)
+- 👌&ensp;note deletion. (admin)
 - upload page optimization.
 - Allow users to leave comments after login. and browse other’s comments. (user)
 - user can like notes. (user)

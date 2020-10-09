@@ -14,6 +14,7 @@ export {
   loadCurrentNote,
   changeToCurrentTopic,
   replaceCurrentNote,
+  deleteNote,
 }from './note'
 
 

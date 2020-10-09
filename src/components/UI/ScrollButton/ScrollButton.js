@@ -13,7 +13,7 @@ class ScrollButton extends Component {
   }
 
   scrollStep() {
-    console.log(this.props.scrollStepInPx);
+    // console.log(this.props.scrollStepInPx);
     if (window.pageYOffset === 0) {
       clearInterval(this.state.intervalId);
     }
@@ -22,7 +22,7 @@ class ScrollButton extends Component {
   }
 
   scrollToTop() {
-    console.log(window.pageYOffset);
+    // console.log(window.pageYOffset);
     let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
     this.setState({ intervalId: intervalId });
   }

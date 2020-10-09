@@ -1,0 +1,33 @@
+
+.container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 60em) {
+  .container{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+}
+.fade-enter .container {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.fade-enter-active .container {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit .container {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit-active .container {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.fade-enter-active .container,
+.fade-exit-active .container {
+  transition: opacity 500ms, transform 500ms;
+}
