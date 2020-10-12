@@ -13,8 +13,8 @@ const IntroNode = (props) => {
     <Aux>
       <div className={classes.introduction}>
         <div className={classes.introduction_title}> Introduction:</div>
-        <div className={classes.introduction_summary}>The purpose of developing the website is to enjoy the fun of dynamic design, to polish and improve my React and Nodejs Skills as well. 
-        In addition, for me to have a place to post my daily notes about the algorithm problems I solved, some technical notes, and experiences.</div>
+        <div className={classes.introduction_summary}>The purpose of developing this website is to enjoy the fun of dynamic design, to polish and improve my React and NodeJS Skills. 
+        In addition, for me to have a place to post my solutions to some coding problems and some technical notes on web development. </div>
         <ul>
           <li className={path === 'algorithm' ? classes.active : null}><FontAwesomeIcon icon={faRocket} color="white" size="2x" /><p>Algorithm related, including questions, data structure, and basic functions. </p></li>
           <li className={path === 'javascript' ? classes.active : null}><FontAwesomeIcon icon={faJsSquare} color="white" size="2x" /><p>JavaScript related, including basic DOM manipulation, Event loop, Closures, build-in functions, etc.</p></li>
