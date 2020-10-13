@@ -27,7 +27,7 @@ export const uploadFileToS3 = async(uploadFolder, file, resObject) => {
   try {
     const signedUrl =  resObject.signedUrl;
     const fileName = resObject.fileName.replace(/\s+/g, '_').toLowerCase();
-    console.log(fileName);
+    // console.log(fileName);
     await axiosInstance.put(signedUrl,  file, {
       headers: {
         'Content-Type': file.type 

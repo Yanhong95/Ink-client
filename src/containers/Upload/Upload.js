@@ -14,7 +14,7 @@ import { axiosInstance, consoleHelper } from '../../shared/utility';
 // 只填category不填topic不行
 // 显示上传文件名称并检查重复
 // 没有选择topic和category不能上传,
-//上传完成后更新currentCatalogList.
+// 上传完成后更新currentCatalogList.
 
 const Upload = props => {
 
@@ -124,9 +124,9 @@ const Upload = props => {
       if (topics.map(topic => topic.toLowerCase()).includes(currTopic.toLowerCase())) {
         currTopic = topics[topics.map(topic => topic.toLowerCase()).indexOf(currTopic.toLowerCase())];
         const filter = props.currentCatalog.filter(currentCatalog => currentCatalog.name.toLowerCase() === currTopic.toLowerCase())[0]
-        if(filter){
-          setSubcategories( filter.subcategories.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
-        }else{
+        if (filter) {
+          setSubcategories(filter.subcategories.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
+        } else {
           setSubcategories([]);
         }
       } else {
@@ -189,7 +189,7 @@ const Upload = props => {
       setError(`The ${!currentStructure.file ? 'file' : !currentStructure.subcategory ? "category" : !currentStructure.topic ? 'topic' : null} field is empty!`);
       setDisable({ ...disable, submit: true });
     }
-    console.log(currentStructure);
+    // console.log(currentStructure);
     props.uploadFile(currentStructure, props.token);
   };
 
@@ -221,40 +221,43 @@ const Upload = props => {
 
   const mainPage = (
     <div className={classes.upload_outer}>
-    <div className={classes.upload}>
-      <div className={classes.upload_title}>Upload</div>
-      <div className={classes.upload_fileName}>
-        <input className={classes.upload_fileName_input} defaultValue={fileName} type="text" ref={inputRef} onChange={(event) => setEnteredFileName(event.target.value)} />
-      </div>
-      <div className={classes.upload_dropFile}>
-        <Dropzone className={classes.upload_dropFile_mainDrop} onSelectFile={dropZomeSelectFile} />
-      </div>
-      <div className={classes.upload_addFiled}>
-        <input className={classes.upload_addFiled_input} onChange={handleSelectFile} id="fileupload" name="myfile" type="file" />
-        <label htmlFor="fileupload">Choose a file</label>
-      </div>
-      <div className={classes.upload_category}>{categoryList}</div>
-      <div className={classes.upload_status}>{
-        error || props.error ? <p className={classes.upload_status_error}>{error || props.error}</p>
-          : props.loading ? <Loader /> : <p className={classes.upload_status_success}>{props.message}</p>
-      }
-      </div>
-      <div className={classes.upload_submit}>
-        <Button disabled={disable.submit} clicked={handleUpload}>Submit</Button>
+      <div className={classes.upload}>
+        <div className={classes.upload_title}>Upload</div>
+        <div className={classes.upload_fileName}>
+          <input className={classes.upload_fileName_input}
+            defaultValue={fileName} type="text"
+            ref={inputRef}
+            onChange={event => setEnteredFileName(event.target.value)} />
+        </div>
+        <div className={classes.upload_dropFile}>
+          <Dropzone className={classes.upload_dropFile_mainDrop} onSelectFile={dropZomeSelectFile} />
+        </div>
+        <div className={classes.upload_addFiled}>
+          <input className={classes.upload_addFiled_input} onChange={handleSelectFile} id="fileupload" name="myfile" type="file" />
+          <label htmlFor="fileupload">Choose a file</label>
+        </div>
+        <div className={classes.upload_category}>{categoryList}</div>
+        <div className={classes.upload_status}>{
+          error || props.error ? <p className={classes.upload_status_error}>{error || props.error}</p>
+            : props.loading ? <Loader /> : <p className={classes.upload_status_success}>{props.message}</p>
+        }
+        </div>
+        <div className={classes.upload_submit}>
+          <Button disabled={disable.submit} clicked={handleUpload}>Submit</Button>
+        </div>
       </div>
     </div>
-  </div>
   );
 
   let successPopup = (
     <Aux>
-      <Modal show={props.message} position={{top: 0, left: 0}} modalClosed={uploadFinished}>
+      <Modal show={props.message} position={{ top: 0, left: 0 }} modalClosed={uploadFinished}>
         <div >{props.message}</div>
       </Modal>
       {mainPage}
     </Aux>
-    );
-  
+  );
+
   return (
     props.message ? successPopup : mainPage
   )
