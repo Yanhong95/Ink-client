@@ -127,10 +127,14 @@
   width: 40px;
   height: 40px;
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 20px;
   right: 20px;
   border-radius: 5px;
   border: none;
+  padding: 0 !important;
 
   &:hover {
     cursor: pointer;
