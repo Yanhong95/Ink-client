@@ -16,7 +16,7 @@
   "summary": "Graduate student majoring in information systems at Northeastern University with 2 years of experience using React and NodeJS to reach project goals and ship high quality software. I’m highly driven and have strong experience creating scalable, high-quality web applications, with expertise in algorithms and problem solving.",
   "skills": {
     "Programming Languages": "JavaScript, Java, HTML, CSS, Sass, Python, GraphQL, SQL",
-    "Frameworks" : "React, Express, Spring, Bootstrap",
+    "Frameworks and Libraries" : "React, Express, Spring, Bootstrap",
     "Databases" : "MongoDB, MySQL, SQL Server, Redis, Elasticsearch",
     "ORMs" : "Mongoose, Sequelize, Hibernate"
   },
