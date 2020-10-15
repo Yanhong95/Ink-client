@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import classes from './Upload.module.scss';
 import * as actions from '../../store/actions/index';
@@ -20,10 +20,11 @@ const Upload = props => {
 
   const [fileName, setFileName] = useState('');
   const [error, setError] = useState(null);
-  const [topics, setTopics] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
+  const [topics, setTopics] = useState(null);
+  const [subcategories, setSubcategories] = useState(null);
   const [currentStructure, setCurrentStructure] = useState({ topic: null, subcategory: null, file: null });
   const [disable, setDisable] = useState({ disableTopic: true, disbaleSubcategory: true, submit: true });
+  const [enteredFileName, setEnteredFileName] = useState('');
   const [timeout, setTimeout] = useState(null);
 
   // load catalogs when render the component at firsttime.
@@ -31,33 +32,44 @@ const Upload = props => {
     if (props.currentCatalog == null) {
       props.loadCatalog();
     } else {
+      // consoleHelper(props.currentCatalog);
       setTopics(props.currentCatalog.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.currentCatalog]);
 
-
   consoleHelper(props.currentCatalog);
 
-  const didMountRef = useRef(false);
+  const clearState = () => {
+    setCurrentStructure({ topic: null, subcategory: null, file: null });
+    setDisable({ disableTopic: true, disbaleSubcategory: true, submit: true });
+    setEnteredFileName('');
+    setFileName('');
+    setError(null);
+  }
+
+  const uploadFinished = () => {
+    props.loadCatalog();
+    clearState();
+  }
+
+  consoleHelper(subcategories);
+
   const inputRef = useRef();
   useEffect(() => {
-    if (didMountRef.current) {
-      const timer = setTimeout(() => {
-        if (fileName !== '' && fileName === inputRef.current.value) {
-          const newFile = new File([currentStructure.file], fileName.toLowerCase() + '.md', { type: 'text/markdown; charset=utf-8' });
-          setCurrentStructure({ ...currentStructure, file: newFile });
-          if(error) setError(null);
-        }
-      }, 500);
-      return () => {
-        clearTimeout(timer);
-      };
-    } else {
-      didMountRef.current = true;
-    }
+    const timer = setTimeout(() => {
+      if (enteredFileName !== '' && enteredFileName === inputRef.current.value) {
+        const newFile = new File([currentStructure.file], enteredFileName.toLowerCase() + '.md', { type: 'text/markdown; charset=utf-8' });
+        setCurrentStructure({ ...currentStructure, file: newFile });
+        setFileName(enteredFileName);
+        setError(null);
+      }
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fileName, inputRef, didMountRef]);
+  }, [enteredFileName, inputRef]);
 
   const dropZomeSelectFile = (file) => {
     const fileName = file.name;
@@ -68,10 +80,9 @@ const Upload = props => {
       setError('Please Select Markdown type file!');
     } else {
       const newFile = new File([file], file.name, { type: 'text/markdown; charset=utf-8' });
-      const pureName = fileNameArray.join('.');
       setCurrentStructure({ ...currentStructure, file: newFile });
-      setFileName(pureName);
-      if(error) setError(null);
+      setFileName(fileNameArray.join('.'));
+      setError(null);
     }
   }
 
@@ -85,15 +96,15 @@ const Upload = props => {
         setError('Please Select Markdown type file!');
       } else {
         const newFile = new File([event.target.files[0]], event.target.files[0].name, { type: 'text/markdown; charset=utf-8' });
-        const pureName = fileNameArray.join('.');
         setCurrentStructure({ ...currentStructure, file: newFile });
-        setFileName(pureName);
-        if(error) setError(null);
+        setFileName(fileNameArray.join('.'));
+        setEnteredFileName(fileNameArray.join('.'));
+        setError(null);
       }
     }
   };
 
-  const addNewTopic =  useCallback(event => {
+  const addNewTopic = event => {
     if (timeout) {
       clearTimeout(timeout);
     }
@@ -105,27 +116,32 @@ const Upload = props => {
       }
       if (currTopic === "") {
         setCurrentStructure({ ...currentStructure, topic: null, subcategory: null });
-        setDisable({ ...disable, submit: false });
-        if(error) setError(null);
+        setDisable({ ...disable, disbaleSubcategory: true, submit: true });
+        setError(null);
         return;
       }
-      const index = topics.map(topic => topic.toLowerCase()).indexOf(currTopic.toLowerCase());
-      if (index > -1) {
-        currTopic = topics[index];
+      // console.log(currTopic);
+      if (topics.map(topic => topic.toLowerCase()).includes(currTopic.toLowerCase())) {
+        currTopic = topics[topics.map(topic => topic.toLowerCase()).indexOf(currTopic.toLowerCase())];
         const filter = props.currentCatalog.filter(currentCatalog => currentCatalog.name.toLowerCase() === currTopic.toLowerCase())[0]
         if (filter) {
           setSubcategories(filter.subcategories.reduce((accumulator, currenValue) => accumulator.concat(currenValue.name), []));
-        } 
+        } else {
+          setSubcategories([]);
+        }
       } else {
         setTopics([...topics, currTopic]);
+        setSubcategories([]);
       }
-      if (currentStructure.topic !== currTopic) setCurrentStructure({ ...currentStructure, topic: currTopic });
-      if(error) setError(null);
+      if (currentStructure.topic !== currTopic) {
+        setCurrentStructure({ ...currentStructure, topic: currTopic });
+      }
+      setError(null);
     }, 5000)
     setTimeout(timer);
-  }, [currentStructure, disable, error, props.currentCatalog, timeout, topics]);
+  }
 
-  const addNewSubcategory = useCallback(event => {
+  const addNewSubcategory = event => {
     if (timeout) {
       clearTimeout(timeout);
     }
@@ -137,27 +153,27 @@ const Upload = props => {
       }
       if (currSubcategory === "") {
         setCurrentStructure({ ...currentStructure, subcategory: null });
-        if(error) setError(null);
-        setDisable({ ...disable, submit: false });
+        setDisable({ ...disable, submit: true });
+        setError(null);
         return;
       };
-      const index = subcategories.map(subcategory => subcategory.toLowerCase()).indexOf(currSubcategory.toLowerCase());
-      if (index > -1) {
-        currSubcategory = subcategories[index];
+      if (subcategories.map(subcategory => subcategory.toLowerCase()).includes(currSubcategory.toLowerCase())) {
+        currSubcategory = subcategories[subcategories.map(subcategory => subcategory.toLowerCase()).indexOf(currSubcategory.toLowerCase())];
         const prevFilesInThisSubcategory = props.currentCatalog.filter(topic => topic.name === currentStructure.topic)[0].subcategories.filter(category => category.name === currSubcategory)[0].notes;
         if (prevFilesInThisSubcategory.filter(note => note.name.toLowerCase() === currentStructure.file.name.toLowerCase()).length !== 0) {
           setCurrentStructure({ ...currentStructure, subcategory: currSubcategory });
           setError('The file name already existed in this category, please update the file name or upload another file!');
+          setDisable({ ...disable, submit: true });
           return;
         }
       }
       if (currentStructure.subcategory !== currSubcategory) {
         setCurrentStructure({ ...currentStructure, subcategory: currSubcategory });
       }
-      if(error) setError(null);
+      setError(null);
     }, 1000);
     setTimeout(timer);
-  }, [currentStructure, disable, error, props.currentCatalog, subcategories, timeout]);
+  }
 
   if (currentStructure.file && disable.disableTopic) {
     setDisable({ ...disable, disableTopic: false });
@@ -172,20 +188,36 @@ const Upload = props => {
     if (!currentStructure.file || !currentStructure.subcategory || !currentStructure.topic) {
       setError(`The ${!currentStructure.file ? 'file' : !currentStructure.subcategory ? "category" : !currentStructure.topic ? 'topic' : null} field is empty!`);
       setDisable({ ...disable, submit: true });
-      return;
     }
+    // console.log(currentStructure);
     props.uploadFile(currentStructure, props.token);
   };
 
 
-  const uploadFinished = () => {
-    props.loadCatalog();
-    setCurrentStructure({ topic: null, subcategory: null, file: null });
-    setDisable({ disableTopic: true, disbaleSubcategory: true, submit: true });
-    setFileName('');
-    if(error)setError(null);
+  let categoryList = null;
+  if (props.currentCatalog) {
+    categoryList = (
+      <Aux>
+        <div className={classes.upload_category_topic}>
+          <input list="topicList" id="topics" name="topics"
+            value={currentStructure.topic ? currentStructure.topic : ""}
+            disabled={disable.disableTopic}
+            onChange={addNewTopic} />
+          <datalist id="topicList">
+            {topics ? topics.map((topic, index) => <option key={index} value={topic} />) : null}
+          </datalist>
+        </div>
+        <div className={classes.upload_category_subcategory}>
+          <input list="subcategoryList" id="subcategory" name="subcategory"
+            value={currentStructure.subcategory ? currentStructure.subcategory : ""}
+            disabled={disable.disbaleSubcategory}
+            onChange={addNewSubcategory} />
+          <datalist id="subcategoryList">
+            {subcategories ? subcategories.map((subcategory, index) => <option key={index} value={subcategory} />) : null}
+          </datalist>
+        </div>
+      </Aux>)
   }
-
 
   const mainPage = (
     <div className={classes.upload_outer}>
@@ -195,7 +227,7 @@ const Upload = props => {
           <input className={classes.upload_fileName_input}
             defaultValue={fileName} type="text"
             ref={inputRef}
-            onChange={event => setFileName(event.target.value)} />
+            onChange={event => setEnteredFileName(event.target.value)} />
         </div>
         <div className={classes.upload_dropFile}>
           <Dropzone className={classes.upload_dropFile_mainDrop} onSelectFile={dropZomeSelectFile} />
@@ -204,26 +236,7 @@ const Upload = props => {
           <input className={classes.upload_addFiled_input} onChange={handleSelectFile} id="fileupload" name="myfile" type="file" />
           <label htmlFor="fileupload">Choose a file</label>
         </div>
-        <div className={classes.upload_category}>
-            <div className={classes.upload_category_topic}>
-              <input list="topicList" id="topics" name="topics"
-                value={currentStructure.topic ? currentStructure.topic : ""}
-                disabled={disable.disableTopic}
-                onChange={addNewTopic} />
-              <datalist id="topicList">
-                {topics ? topics.map((topic, index) => <option key={index} value={topic} />) : null}
-              </datalist>
-            </div>
-            <div className={classes.upload_category_subcategory}>
-              <input list="subcategoryList" id="subcategory" name="subcategory"
-                value={currentStructure.subcategory ? currentStructure.subcategory : ""}
-                disabled={disable.disbaleSubcategory}
-                onChange={addNewSubcategory} />
-              <datalist id="subcategoryList">
-                {subcategories ? subcategories.map((subcategory, index) => <option key={index} value={subcategory} />) : null}
-              </datalist>
-            </div>
-        </div>
+        <div className={classes.upload_category}>{categoryList}</div>
         <div className={classes.upload_status}>{
           error || props.error ? <p className={classes.upload_status_error}>{error || props.error}</p>
             : props.loading ? <Loader /> : <p className={classes.upload_status_success}>{props.message}</p>
