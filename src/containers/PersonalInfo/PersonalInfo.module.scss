@@ -148,12 +148,14 @@
       }
 
       &_major {
+        font-weight: 500;
         flex: 0 100%;
         padding: 0 2rem;
         margin-bottom: 0.5%;
       }
 
       &_school {
+        font-weight: 500;
         flex: 0 70%;
         padding: 0 2rem;
         margin-bottom: 0.5%;
@@ -455,9 +457,11 @@
         a {
           text-decoration: none;
           color: $color-grey-dark-2;
+          font-weight: 500;
 
           &:hover {
             color: $color-blue;
+            cursor: pointer;
           }
         }
 
@@ -529,6 +533,7 @@
         position: relative;
 
         &_title {
+          font-weight: 500;
           display: flex;
           justify-content: space-between;
         }

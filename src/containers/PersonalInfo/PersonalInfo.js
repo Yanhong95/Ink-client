@@ -66,8 +66,8 @@ const PersonalInfo = props => {
           <figure className={classes.info_education_figure}>
             {education.map(theEducation => {
               return (<Aux key={theEducation.schoolAndLocation}>
-                <div className={classes.info_education_figure_major}><b>{theEducation.degree}</b></div>
-                <div className={classes.info_education_figure_school}><b>{theEducation.schoolAndLocation}</b></div>
+                <div className={classes.info_education_figure_major}>{theEducation.degree}</div>
+                <div className={classes.info_education_figure_school}>{theEducation.schoolAndLocation}</div>
                 <div className={classes.info_education_figure_graduateTime}>{theEducation.period}</div>
                 <div className={classes.info_education_figure_courses}>{theEducation.courses}</div></Aux>)
             })}
@@ -79,7 +79,7 @@ const PersonalInfo = props => {
               const dutyList = theWorkExperience.hightLight.map((item, index) => <h5 key={index}>{item}</h5>)
               return (<Aux key={theWorkExperience.companyName} >
                 <div className={classes.info_workExperience_figure_exp}>
-                  <div className={classes.info_workExperience_figure_exp_position}><b><a href={theWorkExperience.companyURL}>{theWorkExperience.companyName}</a></b> -  {theWorkExperience.position}</div>
+                  <div className={classes.info_workExperience_figure_exp_position}><a href={theWorkExperience.companyURL}>{theWorkExperience.companyName}</a> -  {theWorkExperience.position}</div>
                   <div className={classes.info_workExperience_figure_exp_location}>{theWorkExperience.period} | {theWorkExperience.location}</div><br />
                   {theWorkExperience.duty ? <Aux><div className={classes.info_workExperience_figure_exp_content}>{theWorkExperience.duty}</div><br /></Aux> : null}
                   {dutyList}
@@ -95,7 +95,7 @@ const PersonalInfo = props => {
               const contentList = theProject.content.map((item, index) => <h5 key={index}>{item}</h5>);
               return (<Aux key={index}>
                 <div className={classes.info_ProjectExperience_figure_exp}>
-                  <div className={classes.info_ProjectExperience_figure_exp_title}><b>{theProject.name}</b><p>{theProject.period}</p></div><br />
+                  <div className={classes.info_ProjectExperience_figure_exp_title}>{theProject.name}<p>{theProject.period}</p></div><br />
                   {contentList}
                 </div>
               </Aux>);
