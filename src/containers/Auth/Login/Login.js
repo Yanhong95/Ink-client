@@ -64,11 +64,11 @@ const Login = props => {
 
   // use Array.prototype.some to test if there exists at least one element that have errorMessage. 
   // It will stop looping when some element that matches your function is found:
-  Object.values(loginForm).some(input => {
-    errorMessages = input.errorMessage ? <h6>{input.errorMessage}</h6> : null;
-    disabled = input.valid && disabled;
-    return input.errorMessage;
-  });
+  // Object.values(loginForm).some(input => {
+  //   errorMessages = input.errorMessage ? <h6>{input.errorMessage}</h6> : null;
+  //   disabled = input.valid && disabled;
+  //   return input.errorMessage;
+  // });
 
   if (props.error) {
     // const backEndError = props.error.replace(/_/g, ' ').toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
