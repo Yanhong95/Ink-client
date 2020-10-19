@@ -95,10 +95,6 @@ const AuthSignUp = props => {
     redirect = <Redirect to={props.authRedirectPath} />
   }
 
-  // remove,  for test only.
-  disabled = true;
-
-
   let mainContent = (
     <Aux>
       {form}
